@@ -427,3 +427,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Preliminary docs (not for publishing)
+preliminary-docs/
