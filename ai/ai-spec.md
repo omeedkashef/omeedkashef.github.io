@@ -8,7 +8,7 @@
 
 ## Project Identity
 
-- **Project Name:** `omeedkashef.github.io` — Personal Portfolio Website
+- **Project Name:** `FL11024OmeedK.github.io` — Personal Portfolio Website
 - **Short Description:**
   A public-facing personal portfolio for Omeed Kashef, built with React + Vite and deployed to GitHub Pages via GitHub Actions. It presents skills, experience, projects and links, and uses Supabase to persist contact-form messages and to authenticate a private admin back office.
 - **Project Type:** Static Single-Page Application (React + Vite), no custom backend, with Supabase as Backend-as-a-Service.
@@ -19,7 +19,7 @@
 
 ### Goal
 
-Deliver a live, publicly accessible portfolio at `https://omeedkashef.github.io` that represents Omeed Kashef professionally to employers and recruiters, and that proves competence in React, responsive design, CI/CD deployment, and third-party service integration.
+Deliver a live, publicly accessible portfolio at `https://FL11024OmeedK.github.io` that represents Omeed Kashef professionally to employers and recruiters, and that proves competence in React, responsive design, CI/CD deployment, and third-party service integration.
 
 This is the final module of the program. There is **no fictional client** — the student is the client, and there is **no starter codebase**. The project begins from a blank slate scaffolded with `npm create vite@latest`.
 
@@ -98,7 +98,7 @@ This is a frontend-only project. There are no owned API routes; all server inter
 | `/login` | Login | Public but unlisted | **No** |
 | `/backoffice` | Back Office | Authenticated only | **No** |
 
-**Routing constraint:** the browser URL path must always remain `https://omeedkashef.github.io` — it must never become `/home`, `/portfolio`, etc. Use **`HashRouter`** from React Router so navigation is expressed after the `#`, which also avoids GitHub Pages 404s on refresh and direct links.
+**Routing constraint:** the browser URL path must always remain `https://FL11024OmeedK.github.io` — it must never become `/home`, `/portfolio`, etc. Use **`HashRouter`** from React Router so navigation is expressed after the `#`, which also avoids GitHub Pages 404s on refresh and direct links.
 
 `/login` and `/backoffice` must not appear in the header, footer, or mobile bottom navigation. `/backoffice` redirects to the login page when no valid session exists.
 
@@ -264,14 +264,14 @@ This is a frontend-only project. There are no owned API routes; all server inter
 
 ### Project setup
 
-- [ ] Repository is **public**, named `omeedkashef.github.io`, with all coaches added as collaborators.
+- [ ] Repository is **public**, named `FL11024OmeedK.github.io`, with all coaches added as collaborators.
 - [ ] Branches `main`, `dev`, and `feature/*` exist; no direct commits were made to `main`.
 - [ ] All feature branches merged into `dev`, then `dev` merged into `main`; history shows `feature → dev → main`.
 - [ ] `.env` and `preliminary-docs/` are gitignored; `submission-summary.md` is **not** in the repository.
 
 ### Application
 
-- [ ] `npm run build` completes without errors and the site is live at `https://omeedkashef.github.io`.
+- [ ] `npm run build` completes without errors and the site is live at `https://FL11024OmeedK.github.io`.
 - [ ] The URL path never shows `/home`, `/portfolio`, etc.; refreshing any view does not 404.
 - [ ] Header and footer render on every page; the AI-generated logo links to Home.
 - [ ] Layout is correct on desktop (>768px, horizontal nav) and mobile (≤768px, bottom icon nav) with no horizontal overflow.
