@@ -104,6 +104,34 @@ No application data. The only values handled are build-time environment variable
 
 Only the **anon/publishable** key is ever used. The `service_role` key must never appear in this repository, in the workflow, or in the bundle.
 
+### Validations
+
+This feature has no user input, so there is no form validation. The validations that apply are configuration checks:
+
+| Check | Rule | If it fails |
+| --- | --- | --- |
+| Base path | `vite.config.js` must set `base: '/'` | Built asset URLs resolve to the wrong location and the deployed page renders blank |
+| Build output | `npm run build` must emit `dist/` with `index.html` and an `assets/` folder | The deploy step has nothing to upload and the job fails |
+| Asset URLs | Paths in `dist/index.html` must start with `/`, not `./` or a subpath | Assets 404 on GitHub Pages |
+| Lockfile | `package-lock.json` must be committed and in sync with `package.json` | `npm ci` fails in CI |
+| Secrets | `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` must exist as repository secrets | They resolve to empty strings; the build still succeeds but Supabase features fail at runtime |
+| Secret hygiene | No `VITE_*` value may be hard-coded in a committed file, and `.env` must be ignored | Credentials leak publicly in the repository and in the client bundle |
+| Router | The app must use `HashRouter`, never `BrowserRouter` | Direct links and refreshes on any route 404 on static hosting |
+
+### Expected Behavior
+
+| Situation | Expected result |
+| --- | --- |
+| `npm run dev` locally | Dev server starts and Home renders at `http://localhost:5173/#/` |
+| `npm run build` | Exits 0 and writes `dist/` |
+| Push to `main` | Workflow runs, builds, and publishes; the live site reflects the change |
+| Push to `dev` or `feature/*` | No workflow run, no deployment |
+| Visitor opens the site root | React app mounts and Home renders |
+| Visitor navigates between pages | Only the `#` fragment changes; the served path stays `/` |
+| Visitor refreshes on `#/backoffice` | The app reloads and resolves that route — no 404 |
+| Visitor requests an unknown route | Handled client-side by the router, not by a server 404 |
+| Secrets absent at build time | Build still succeeds; Supabase-dependent features degrade at runtime |
+
 ---
 
 ## Tech Constraints (Feature-Level)
