@@ -430,3 +430,12 @@ FodyWeavers.xsd
 
 # Preliminary docs (not for publishing)
 preliminary-docs/
+
+# Vite build output
+dist/
+dist-ssr/
+
+# Local env files (never commit — secrets are injected by GitHub Actions)
+.env
+.env.local
+.env.*.local
