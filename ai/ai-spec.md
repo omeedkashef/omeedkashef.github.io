@@ -87,20 +87,29 @@ Extra mile only (after core completion and coach review):
 
 This is a frontend-only project. There are no owned API routes; all server interaction goes through the Supabase client.
 
-### Routes
+### Screens
 
-| Route | Page | Access | In navigation? |
-| --- | --- | --- | --- |
-| `/` | Home | Public | Yes |
-| `/portfolio` | Portfolio | Public | Yes |
-| `/links` | Links | Public | Yes |
-| `/contact` | Contact | Public | Yes |
-| `/login` | Login | Public but unlisted | **No** |
-| `/backoffice` | Back Office | Authenticated only | **No** |
+| Screen | How it is reached | URL shown | Access | In navigation? |
+| --- | --- | --- | --- | --- |
+| Home | Default view / logo click | `…github.io` | Public | Yes |
+| Portfolio | Nav click (state) | `…github.io` | Public | Yes |
+| Links | Nav click (state) | `…github.io` | Public | Yes |
+| Contact | Nav click (state) | `…github.io` | Public | Yes |
+| Login | Typing `#/login`, or secret keydown | `…github.io/#/login` | Public but unlisted | **No** |
+| Back Office | Typing `#/backoffice`, or redirect after login | `…github.io/#/backoffice` | Authenticated only | **No** |
 
-**Routing constraint:** the browser URL path must always remain `https://FL11024OmeedK.github.io` — it must never become `/home`, `/portfolio`, etc. Use **`HashRouter`** from React Router so navigation is expressed after the `#`, which also avoids GitHub Pages 404s on refresh and direct links.
+**Navigation model — hybrid, and this is deliberate.** Two grading requirements pull in opposite directions:
 
-`/login` and `/backoffice` must not appear in the header, footer, or mobile bottom navigation. `/backoffice` redirects to the login page when no valid session exists.
+- *Vite Base Path:* "Navigating to any pages, the url path stay always `https://username.github.io` without /home, /portfolio, etc."
+- *Secret Login Route / Back Office Route:* the login page must be reachable "by manually typing the URL OR secret keyboard keydown", and navigating to `/backoffice` must render or redirect based on auth.
+
+Neither pure state-switching nor a full router satisfies both. The resolution:
+
+1. **Public pages switch via React state, not routing.** A single `view` state in `App.jsx` selects Home, Portfolio, Links, or Contact. The URL never changes — it stays exactly `https://FL11024OmeedK.github.io`, satisfying the Vite Base Path rule in its strictest reading.
+2. **The two hidden screens are addressable by hash.** On mount and on `hashchange`, read `window.location.hash`: `#/login` renders Login, `#/backoffice` renders Back Office (auth-guarded, redirecting to Login when there is no session). A secret keydown sequence also opens Login. A hash is used rather than a real path because GitHub Pages serves static files only and would 404 on a direct request to `/backoffice`.
+3. **No React Router dependency.** A small hash listener covers the two hidden screens; a router would add a dependency and put `#/portfolio` in the URL for public pages, which is what requirement 1 forbids. *(Note: the docebo module doc suggests React Router with `HashRouter`. The grading sheet never requires React Router, and the grading sheet is authoritative — so this deviation is intentional and documented here.)*
+
+Login and Back Office must not appear in the header, footer, or mobile bottom navigation.
 
 ### External Services (not our endpoints)
 
@@ -142,14 +151,37 @@ This is a frontend-only project. There are no owned API routes; all server inter
 
 ---
 
+## Content Sources and Authenticity
+
+This is a real professional portfolio that employers will read. **All content must be true.**
+
+- **Education and work history come from the real resume and LinkedIn profile.** Do not invent employers, roles, dates, or metrics.
+- **Projects are the applications actually built during the Codeboxx program** (Rocket Elevators and the other module projects), described with their real tech stack and purpose.
+- **Never carry over the placeholder projects from the Figma/Claude design export** — "AV Perception HMI", "Surgical Planning Workflow", "Field Health Data Platform", "Mission Systems Dashboard", "Justice Access Navigator". These are design filler and describe work that is not the student's.
+- **Never carry over the design's Unsplash image URLs.** All images are locally hosted, and the required ones are AI-generated with the tool documented.
+
+### Known content gaps to resolve before the Portfolio page is done
+
+- Education entries have **no dates** on the resume; the grading sheet requires institution, degree/program, **and dates**. These must be supplied.
+- The resume anonymises the San Diego employer as "Defense Contractor" while LinkedIn names **Pacific Science & Engineering Group, Inc.** Pick one and use it consistently.
+- Haemonetics is titled "Usability Consultant" on the resume and "Product Engineer" on LinkedIn. Pick one.
+- `Links.docx` currently holds a single URL. The Links page needs **at least three**, each with a title, a 1–3 sentence description, and a thumbnail image.
+- Soft skills are not itemised anywhere in the source documents. At least three must be written, each with an icon and supporting text.
+
+### Design source
+
+A visual prototype exists (Figma → Claude Design export, "Nature and technology in harmony"): a dark, nature-toned design system with CSS custom properties. Its **look and tokens** are a good foundation. Its **structure is not** — it is a single-page scroller with Work/About/Contact only. It is missing the Links page, the education section, the soft-skills section, the resume download button, the AI-generated logo, the footer copyright notice, and the mobile bottom icon navigation. Treat the design as styling reference, and this specification as the source of truth for structure and content.
+
+---
+
 ## Tech Stack and Tools
 
 ### Frontend
 
 - React (scaffolded with `npm create vite@latest`, framework React, variant JavaScript)
 - Vite (build tool and dev server)
-- React Router (`HashRouter`)
-- Custom CSS — no UI framework
+- **No routing library.** State-based public views plus a small `hashchange` listener for the two hidden screens (see Navigation model).
+- Custom CSS with CSS custom properties (variables) for all colors and spacing — no UI framework
 
 ### Backend
 
@@ -272,7 +304,9 @@ This is a frontend-only project. There are no owned API routes; all server inter
 ### Application
 
 - [ ] `npm run build` completes without errors and the site is live at `https://FL11024OmeedK.github.io`.
-- [ ] The URL path never shows `/home`, `/portfolio`, etc.; refreshing any view does not 404.
+- [ ] Navigating between the four public pages never changes the URL — it stays `https://FL11024OmeedK.github.io` with no path and no hash.
+- [ ] Typing `#/login` or `#/backoffice` opens those screens directly, and refreshing them does not 404.
+- [ ] All portfolio content is factually true; no placeholder projects from the design export remain.
 - [ ] Header and footer render on every page; the AI-generated logo links to Home.
 - [ ] Layout is correct on desktop (>768px, horizontal nav) and mobile (≤768px, bottom icon nav) with no horizontal overflow.
 - [ ] Home has ≥3 distinct sections, ≥3 technical skills and ≥3 soft skills (each with supporting text and an icon), and ≥2 AI-generated images.
