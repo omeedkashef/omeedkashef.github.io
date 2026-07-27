@@ -155,13 +155,40 @@ This is a real professional portfolio that employers will read. **All content mu
 - **Never carry over the placeholder projects from the Figma/Claude design export** — "AV Perception HMI", "Surgical Planning Workflow", "Field Health Data Platform", "Mission Systems Dashboard", "Justice Access Navigator". These are design filler and describe work that is not the student's.
 - **Never carry over the design's Unsplash image URLs.** All images are locally hosted, and the required ones are AI-generated with the tool documented.
 
-### Known content gaps to resolve before the Portfolio page is done
+### Resolved content decisions
 
-- Education entries have **no dates** on the resume; the grading sheet requires institution, degree/program, **and dates**. These must be supplied.
-- The resume anonymises the San Diego employer as "Defense Contractor" while LinkedIn names **Pacific Science & Engineering Group, Inc.** Pick one and use it consistently.
-- Haemonetics is titled "Usability Consultant" on the resume and "Product Engineer" on LinkedIn. Pick one.
-- `Links.docx` currently holds a single URL. The Links page needs **at least three**, each with a title, a 1–3 sentence description, and a thumbnail image.
-- Soft skills are not itemised anywhere in the source documents. At least three must be written, each with an icon and supporting text.
+- **Education entries carry no dates.** Institution and degree/program only.
+  > ⚠️ The grading sheet's Education Section requirement reads "Each entry includes: institution name, degree/program, **and dates**." Omitting dates is a deliberate choice by the student and is a known, accepted risk on that line item.
+- **The San Diego employer is named "Defense Contractor"** — never Pacific Science & Engineering Group, even though the LinkedIn export names it. Do not let the LinkedIn wording leak into the site.
+- **Haemonetics is titled "Usability Consultant"**, matching the resume.
+
+### Technical skills (from the resume — Home page needs ≥3)
+
+Each needs an icon and a sentence of supporting text, not a bare label.
+
+- **JavaScript & Front-End** — HTML, CSS, JavaScript, React
+- **MERN Stack** — MongoDB, Express, React, Node
+- **Java Back-End** — Java, Spring Boot, JPA, SQL
+- **APIs & Tooling** — REST APIs, Postman, Git & GitHub
+- **Data Analysis & Visualization** — R, Excel, statistical analysis of study data
+
+### Soft skills (drawn from the resume — Home page needs ≥3)
+
+Each needs an icon and supporting text. Every one below is evidenced by a real line in the resume.
+
+- **Leadership & Mentorship** — Led a product development team of 5 through a Class II device 510(k) submission, an agile team of 8 at Ford, and trained/mentored designers in human factors and product development.
+- **Cross-Functional Communication** — Streamlined communication across mechanical engineering, regulatory, human factors, and business development by organizing information architecture, defining roles, and setting agendas.
+- **Stakeholder & Client Management** — Managed OKRs, timelines, product backlogs, and sprints with stakeholders from cradle to grave; presented competitive analysis and product strategy to leadership.
+- **Design Thinking & Empathy** — Persona development, user journey and empathy mapping, and qualitative research with 50+ participants to ground decisions in real user needs.
+
+### Links page content (≥3 required)
+
+| Title | URL | Description |
+| --- | --- | --- |
+| LinkedIn | `https://www.linkedin.com/in/omeedkashef` | Professional profile covering a decade of product, UX, and systems engineering work across autonomous vehicles, medical devices, and defense. The best place to see the full career history and to get in touch about roles. |
+| GitHub | `https://github.com/FL11024OmeedK` | Source code for every project built during the Codeboxx AI Native Full Stack Developer program, including this portfolio. Shows commit history, branching workflow, and how the applications are actually put together. |
+| Coursera Profile | `https://www.coursera.org/learner/omeedkashef` | Verified certifications, including the Google UX Design Professional Certificate. Documents the formal design training that sits behind the human-factors side of my work. |
+| Portfolio Design File | `https://www.figma.com/make/YBYiqbFMh7f60b3tFPcSHt/Portfolio-website-design` | The Figma design file this site was prototyped from. Included to show the process — design system, tokens, and layout decisions — before any code was written. |
 
 ### Design source
 
@@ -305,7 +332,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 - [ ] Header and footer render on every page; the AI-generated logo links to Home.
 - [ ] Layout is correct on desktop (>768px, horizontal nav) and mobile (≤768px, bottom icon nav) with no horizontal overflow.
 - [ ] Home has ≥3 distinct sections, ≥3 technical skills and ≥3 soft skills (each with supporting text and an icon), and ≥2 AI-generated images.
-- [ ] Portfolio has education, work, and project sections in reverse chronological order, a downloadable resume PDF, and ≥2 AI-generated images.
+- [ ] Portfolio has education, work, and project sections, work and projects in reverse chronological order, a downloadable resume PDF, and ≥2 AI-generated images.
 - [ ] Links page shows ≥3 cards, each with image, title, description, and a URL opening in a new tab, plus ≥1 AI-generated image.
 - [ ] Contact form validates all three fields and email format, inserts into Supabase `messages`, and shows distinct success/failure feedback with fields reset on success.
 - [ ] Login is reachable only by direct URL, authenticates via `signInWithPassword`, persists the session across refresh, and shows a distinct error on failure.
