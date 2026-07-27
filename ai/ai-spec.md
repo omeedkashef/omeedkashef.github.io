@@ -87,29 +87,24 @@ Extra mile only (after core completion and coach review):
 
 This is a frontend-only project. There are no owned API routes; all server interaction goes through the Supabase client.
 
-### Screens
+### Routes
 
-| Screen | How it is reached | URL shown | Access | In navigation? |
+| Route | Page | URL shown | Access | In navigation? |
 | --- | --- | --- | --- | --- |
-| Home | Default view / logo click | `…github.io` | Public | Yes |
-| Portfolio | Nav click (state) | `…github.io` | Public | Yes |
-| Links | Nav click (state) | `…github.io` | Public | Yes |
-| Contact | Nav click (state) | `…github.io` | Public | Yes |
-| Login | Typing `#/login`, or secret keydown | `…github.io/#/login` | Public but unlisted | **No** |
-| Back Office | Typing `#/backoffice`, or redirect after login | `…github.io/#/backoffice` | Authenticated only | **No** |
+| `/` | Home | `…github.io/#/` | Public | Yes |
+| `/portfolio` | Portfolio | `…github.io/#/portfolio` | Public | Yes |
+| `/links` | Links | `…github.io/#/links` | Public | Yes |
+| `/contact` | Contact | `…github.io/#/contact` | Public | Yes |
+| `/login` | Login | `…github.io/#/login` | Public but unlisted | **No** |
+| `/backoffice` | Back Office | `…github.io/#/backoffice` | Authenticated only | **No** |
 
-**Navigation model — hybrid, and this is deliberate.** Two grading requirements pull in opposite directions:
+**Routing: React Router with `HashRouter`.**
 
-- *Vite Base Path:* "Navigating to any pages, the url path stay always `https://username.github.io` without /home, /portfolio, etc."
-- *Secret Login Route / Back Office Route:* the login page must be reachable "by manually typing the URL OR secret keyboard keydown", and navigating to `/backoffice` must render or redirect based on auth.
+The grading sheet requires that the URL *path* always stays `https://FL11024OmeedK.github.io` and never becomes `/home`, `/portfolio`, etc. `HashRouter` satisfies this — everything after the `#` is a fragment, not a path, so the path served by GitHub Pages is always `/`. The docebo module doc recommends `HashRouter` for exactly this reason, and it is also what makes a direct link or a refresh on `#/backoffice` work on static hosting, where a real `/backoffice` request would 404.
 
-Neither pure state-switching nor a full router satisfies both. The resolution:
+This also gives Login and Back Office genuinely addressable URLs, which the Secret Login Route and Back Office Route requirements depend on: the login page must be reachable "by manually typing the URL OR secret keyboard keydown", and `/backoffice` must render when authenticated and redirect when not.
 
-1. **Public pages switch via React state, not routing.** A single `view` state in `App.jsx` selects Home, Portfolio, Links, or Contact. The URL never changes — it stays exactly `https://FL11024OmeedK.github.io`, satisfying the Vite Base Path rule in its strictest reading.
-2. **The two hidden screens are addressable by hash.** On mount and on `hashchange`, read `window.location.hash`: `#/login` renders Login, `#/backoffice` renders Back Office (auth-guarded, redirecting to Login when there is no session). A secret keydown sequence also opens Login. A hash is used rather than a real path because GitHub Pages serves static files only and would 404 on a direct request to `/backoffice`.
-3. **No React Router dependency.** A small hash listener covers the two hidden screens; a router would add a dependency and put `#/portfolio` in the URL for public pages, which is what requirement 1 forbids. *(Note: the docebo module doc suggests React Router with `HashRouter`. The grading sheet never requires React Router, and the grading sheet is authoritative — so this deviation is intentional and documented here.)*
-
-Login and Back Office must not appear in the header, footer, or mobile bottom navigation.
+Use `BrowserRouter` nowhere. Login and Back Office must not appear in the header, footer, or mobile bottom navigation.
 
 ### External Services (not our endpoints)
 
@@ -180,7 +175,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 
 - React (scaffolded with `npm create vite@latest`, framework React, variant JavaScript)
 - Vite (build tool and dev server)
-- **No routing library.** State-based public views plus a small `hashchange` listener for the two hidden screens (see Navigation model).
+- React Router (`HashRouter`) — see Routing above
 - Custom CSS with CSS custom properties (variables) for all colors and spacing — no UI framework
 
 ### Backend
@@ -304,8 +299,8 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 ### Application
 
 - [ ] `npm run build` completes without errors and the site is live at `https://FL11024OmeedK.github.io`.
-- [ ] Navigating between the four public pages never changes the URL — it stays `https://FL11024OmeedK.github.io` with no path and no hash.
-- [ ] Typing `#/login` or `#/backoffice` opens those screens directly, and refreshing them does not 404.
+- [ ] The URL path never becomes `/home`, `/portfolio`, etc. — navigation happens after the `#`, and the served path stays `/`.
+- [ ] Typing `#/login` or `#/backoffice` opens those screens directly, and refreshing any route does not 404.
 - [ ] All portfolio content is factually true; no placeholder projects from the design export remain.
 - [ ] Header and footer render on every page; the AI-generated logo links to Home.
 - [ ] Layout is correct on desktop (>768px, horizontal nav) and mobile (≤768px, bottom icon nav) with no horizontal overflow.
