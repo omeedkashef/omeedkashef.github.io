@@ -260,7 +260,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 3. **Write junior-friendly code.** Plain function components with hooks, clear names, small files. No advanced patterns, no clever abstractions, no premature optimization.
 4. **Never create a backend.** If a task seems to need a server, it must be solved with Supabase or static data instead.
 5. **Create the Supabase client in exactly one place** — `src/lib/supabaseClient.js`. Every feature imports it from there.
-6. **Never hard-code Supabase credentials.** Read `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from environment variables. Only the anon/publishable key is ever used — the `service_role` key must never appear in this project.
+6. **Never hard-code Supabase credentials.** Read `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` from environment variables. Only the anon/publishable key is ever used — the `service_role` key must never appear in this project.
 7. **Never commit `.env`.** It stays in `.gitignore`; the deploy workflow injects the values from GitHub repository secrets.
 8. **Reuse before creating.** Extend an existing component or file when one fits; do not duplicate layout, styling, or fetch logic.
 9. **Every page renders inside the `Main` layout** so the header and footer are consistent everywhere.
@@ -290,7 +290,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 2. Create a `.env` file in the project root (never committed):
    ```
    VITE_SUPABASE_URL=<your Supabase project URL>
-   VITE_SUPABASE_ANON_KEY=<your Supabase anon/publishable key>
+   VITE_SUPABASE_PUBLISHABLE_KEY=<your Supabase anon/publishable key>
    ```
 3. Start the dev server: `npm run dev`
 4. Open the printed local URL (default `http://localhost:5173`).
@@ -310,7 +310,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 
 - Push to `main` triggers `.github/workflows/deploy.yml`, which runs `npm ci`, `npm run build`, and deploys `dist/`.
 - GitHub Pages source must be set to **GitHub Actions**.
-- `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` must exist as repository secrets (Settings → Secrets and variables → Actions) and be passed to the build step via `env:`.
+- `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` must exist as repository secrets (Settings → Secrets and variables → Actions) and be passed to the build step via `env:`.
 
 ---
 
