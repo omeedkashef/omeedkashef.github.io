@@ -46,7 +46,7 @@ This is the foundation feature — no other feature can be verified until this o
 - **B — Base path.** `vite.config.js` sets `base: '/'`, correct for a `username.github.io` root repository.
 - **C — Deploy workflow.** `.github/workflows/deploy.yml` triggers on push to `main`, runs `npm ci` then `npm run build`, and deploys the `dist/` folder to GitHub Pages.
 - **D — Pages source.** In repository settings, GitHub Pages source is set to **GitHub Actions** (not a branch).
-- **E — Build-time secrets.** `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` exist as repository secrets and are passed to the build step via `env:`.
+- **E — Build-time secrets.** `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` exist as repository secrets and are passed to the build step via `env:`.
 - **F — Application shell.** `main.jsx` wraps the app in `HashRouter`; `App.jsx` declares the six `Route` entries pointing at placeholder page components that later features fill in.
 - **G — Ignore rules.** `.env` is listed in `.gitignore` and is never committed.
 
@@ -89,7 +89,7 @@ None. This feature introduces no server calls.
 
 - `.github/workflows/deploy.yml` — build and deploy pipeline
 - GitHub repository settings → Pages → Source: GitHub Actions
-- GitHub repository settings → Secrets and variables → Actions: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
+- GitHub repository settings → Secrets and variables → Actions: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`
 
 ---
 
@@ -100,7 +100,7 @@ No application data. The only values handled are build-time environment variable
 | Variable | Source | Used for |
 | --- | --- | --- |
 | `VITE_SUPABASE_URL` | GitHub Actions secret (prod) / `.env` (local) | Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | GitHub Actions secret (prod) / `.env` (local) | Supabase anon/publishable key |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | GitHub Actions secret (prod) / `.env` (local) | Supabase anon/publishable key |
 
 Only the **anon/publishable** key is ever used. The `service_role` key must never appear in this repository, in the workflow, or in the bundle.
 
@@ -114,7 +114,7 @@ This feature has no user input, so there is no form validation. The validations 
 | Build output | `npm run build` must emit `dist/` with `index.html` and an `assets/` folder | The deploy step has nothing to upload and the job fails |
 | Asset URLs | Paths in `dist/index.html` must start with `/`, not `./` or a subpath | Assets 404 on GitHub Pages |
 | Lockfile | `package-lock.json` must be committed and in sync with `package.json` | `npm ci` fails in CI |
-| Secrets | `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` must exist as repository secrets | They resolve to empty strings; the build still succeeds but Supabase features fail at runtime |
+| Secrets | `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` must exist as repository secrets | They resolve to empty strings; the build still succeeds but Supabase features fail at runtime |
 | Secret hygiene | No `VITE_*` value may be hard-coded in a committed file, and `.env` must be ignored | Credentials leak publicly in the repository and in the client bundle |
 | Router | The app must use `HashRouter`, never `BrowserRouter` | Direct links and refreshes on any route 404 on static hosting |
 
@@ -152,7 +152,7 @@ This feature has no user input, so there is no form validation. The validations 
 - [ ] `npm run build` completes without errors and produces a `dist/` folder.
 - [ ] `vite.config.js` sets `base: '/'`.
 - [ ] `.github/workflows/deploy.yml` exists, triggers on push to `main`, and runs `npm ci` → `npm run build` → deploy of `dist/`.
-- [ ] The workflow passes `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to the build step via `env:`.
+- [ ] The workflow passes `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to the build step via `env:`.
 - [ ] Both secrets are configured in repository settings.
 - [ ] GitHub Pages source is set to GitHub Actions and a run has completed successfully.
 - [ ] `https://FL11024OmeedK.github.io` loads the React application.
