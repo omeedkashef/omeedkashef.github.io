@@ -33,7 +33,8 @@ first.
 | `scraps/make/bash.txt` | **2nd** | Shell history containing a **complete six-page rewrite** — the most advanced artifact in the project. |
 | `scraps/make/theme.css` | — | Empty stub. No tokens. |
 | `scraps/make/fonts.css` | — | Google Fonts import. Already transferred. |
-| `assets/hero.jpg`, `assets/portrait.jpg` | — | Already transferred. |
+| `assets/hero.jpg` | — | Transferred to `src/assets/hero.jpg`. AI-generated (DALL·E). |
+| `assets/portrait.jpg` | — | **Misleading name — not a portrait.** It is the mood board, identical in content to `4b07218b` from the `.make` bundle. Kept as [design-source/moodboard.png](design-source/moodboard.png) and removed from `src/assets/`, since it is a style reference rather than site content. |
 | `Portfolio-print.dc.html` | — | Print/PDF translation of generation 1. **Captured** to [design-source/](design-source/Portfolio-print.dc.html) — carries the only light-mode palette (§5). |
 | `uploads/*.make` (×2) | — | Figma Make ZIP bundles. **Blocked** — exceed the 256 KiB read cap, see §6. |
 
@@ -98,11 +99,13 @@ Reverse chronological. Dates included — see the note after the table.
 | University of Iowa | M.S., Industrial & Systems Engineering | 2017–2019 |
 | Grinnell College | B.A., Biochemistry | 2010–2014 |
 
-> ⚠️ **This contradicts a resolved spec decision, in the student's favour.**
+> ⚠️ **Dates are recorded here but deliberately NOT used on the site.**
 > `ai-spec.md` records "Education entries carry no dates" as a deliberate,
 > accepted risk against the grading sheet, which requires "institution name,
-> degree/program, **and dates**". The design supplies those dates. Adopting them
-> would close a known grading gap. Worth revisiting.
+> degree/program, **and dates**". The design supplies those dates, so adopting
+> them would close that gap — the student was asked and **reaffirmed the
+> no-dates decision**. The Portfolio page must show institution and
+> degree/program only. The dates above exist for reference, not for rendering.
 
 ### Work experience
 
@@ -166,10 +169,9 @@ actual resume, and tied to specific roles above.
 | Swarm Control | Scenario design · Card sorting · Systems requirements | Reduced information complexity | Mapped operator priorities and tradeoffs for cross-domain unmanned vehicles so frontend and backend teams could focus on the information that matters in time-critical decisions. |
 | Surgical Needle Tracking | Ethnography · UFMEA · Validation planning | 17 critical use steps identified | Developed a risk-informed workflow and acceptance criteria for a surgical needle-counting system designed to mitigate retained-item risk in the operating room. |
 
-> **Unresolved:** which set ships. Both satisfy the grading sheet, which asks only
-> for "at least one project… project name, tech, description and image." Set B
-> maps directly onto the work history above; Set A is broader and has images
-> already downloaded. They are not mutually exclusive.
+> ✅ **Resolved: Set A ships.** The six projects above are what the Portfolio page
+> will carry, with the image mapping already in place. Set B is retained here as a
+> record only — do not put it on the site unless that decision changes.
 
 ### Technical skills (Home requires ≥3, each with icon + supporting text)
 

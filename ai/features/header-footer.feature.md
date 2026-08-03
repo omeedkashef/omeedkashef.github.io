@@ -180,7 +180,7 @@ No form validation. The checks that apply are structural:
 - [ ] The AI-generated logo is visible in the header.
 - [ ] Clicking the logo navigates to Home.
 - [ ] The logo has appropriate `alt` text.
-- [ ] The AI tool used to generate the logo is documented.
+- [x] The AI tool used to generate the logo is documented — see "AI-generated assets and tool attribution" in `ai/ai-spec.md`. The logo was generated with DALL·E via ChatGPT.
 - [ ] Above 768px, navigation links are displayed horizontally at the top.
 - [ ] At 768px and below, navigation becomes icons displayed at the bottom.
 - [ ] The logo scales appropriately and does not overflow.
