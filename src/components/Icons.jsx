@@ -146,6 +146,29 @@ export function StakeholderIcon() {
   )
 }
 
+/* --- Feedback icons -------------------------------------------------------
+   Used by the contact form's success and failure states. Sized to sit inline
+   with a line of body text. */
+
+const feedback = { ...base, width: 16, height: 16, strokeWidth: 2 }
+
+export function CheckIcon() {
+  return (
+    <svg {...feedback}>
+      <path d="m4 12.5 5 5 11-11" />
+    </svg>
+  )
+}
+
+export function XIcon() {
+  return (
+    <svg {...feedback}>
+      <path d="M6 6l12 12" />
+      <path d="M18 6 6 18" />
+    </svg>
+  )
+}
+
 export function EmpathyIcon() {
   return (
     <svg {...skill}>
