@@ -12,16 +12,199 @@
   flex-direction: column;
 }
 
-/* Clears the fixed header. On mobile the bottom icon nav is fixed too, so the
-   page also needs room beneath it. */
+/* Clears the fixed header. The matching bottom clearance lives on .site-footer,
+   not here — the footer renders after <main>, so padding on main would leave the
+   last footer line sitting under the fixed mobile nav. */
 .app-main {
   flex: 1;
   padding-top: var(--header-h);
 }
 
+/* --- Site header --------------------------------------------------------- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--nav-solid);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  color: var(--fg);
+  min-width: 0; /* lets the name truncate instead of pushing the nav off-screen */
+}
+
+.site-header__brand:hover {
+  color: var(--primary);
+}
+
+.site-header__logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.site-header__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Desktop navigation (>768px) ----------------------------------------- */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+}
+
+.site-nav__link {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  padding-block: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav__link:hover {
+  color: var(--fg);
+}
+
+.site-nav__link--active {
+  color: var(--fg);
+  border-bottom-color: var(--primary);
+}
+
+/* Below the breakpoint the header keeps only the brand — MobileNav takes over. */
 @media (max-width: 768px) {
-  .app-main {
-    padding-bottom: var(--mobile-nav-h);
+  .site-nav {
+    display: none;
+  }
+}
+
+/* --- Mobile bottom navigation (<=768px) ---------------------------------- */
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: var(--mobile-nav-h);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--nav-solid);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    /* Keeps the bar clear of the iOS home indicator. */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .mobile-nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--fg-muted);
+    min-width: 0;
+  }
+
+  .mobile-nav__link--active {
+    color: var(--primary);
+  }
+
+  .mobile-nav__label {
+    font-size: 0.625rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+/* --- Site footer --------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding-block: var(--gap-lg);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.site-footer__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--fg);
+}
+
+.site-footer__tagline,
+.site-footer__copyright {
+  font-size: var(--step-xs);
+  color: var(--fg-muted);
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  font-size: var(--step-xs);
+}
+
+.site-footer__contact a {
+  color: var(--fg-muted);
+}
+
+.site-footer__contact a:hover {
+  color: var(--primary);
+}
+
+/* Stack the footer into a single readable column on narrow screens, and clear
+   the fixed bottom nav. The footer is the last element in flow, so this is what
+   keeps the copyright line from being covered. */
+@media (max-width: 768px) {
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+  }
+
+  .site-footer {
+    padding-bottom: calc(var(--gap-lg) + var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px));
   }
 }
 

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import Main from './components/Main.jsx'
 import Home from './pages/Home.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import Links from './pages/Links.jsx'
@@ -12,14 +13,16 @@ import './App.css'
 // the Login feature).
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/portfolio" element={<Portfolio />} />
-      <Route path="/links" element={<Links />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/backoffice" element={<BackOffice />} />
-    </Routes>
+    <Main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/links" element={<Links />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/backoffice" element={<BackOffice />} />
+      </Routes>
+    </Main>
   )
 }
 
