@@ -169,6 +169,18 @@ export function XIcon() {
   )
 }
 
+export function TrashIcon() {
+  return (
+    <svg {...base} width="18" height="18">
+      <path d="M4 6.5h16" />
+      <path d="M9 6.5V5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5v1.5" />
+      <path d="M6 6.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19V6.5" />
+      <path d="M10.5 10.5v6" />
+      <path d="M13.5 10.5v6" />
+    </svg>
+  )
+}
+
 export function EmpathyIcon() {
   return (
     <svg {...skill}>
