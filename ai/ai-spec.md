@@ -151,8 +151,11 @@ Use `BrowserRouter` nowhere. Login and Back Office must not appear in the header
 This is a real professional portfolio that employers will read. **All content must be true.**
 
 - **Education and work history come from the real resume and LinkedIn profile.** Do not invent employers, roles, dates, or metrics.
-- **Projects are the applications actually built during the Codeboxx program** (Rocket Elevators and the other module projects), described with their real tech stack and purpose.
-- **Never carry over the placeholder projects from the Figma/Claude design export** — "AV Perception HMI", "Surgical Planning Workflow", "Field Health Data Platform", "Mission Systems Dashboard", "Justice Access Navigator". These are design filler and describe work that is not the student's.
+- **Projects come from two real sources**, described with their real tech stack and purpose:
+  1. **Professional work** drawn from the resume and professional history — "AV Perception HMI", "Surgical Planning Workflow", "Field Health Data Platform", "Mission Systems Dashboard", "Justice Access Navigator", "Supply Chain Transparency". These six were authored by the student in the design file and reflect genuine work across autonomous vehicles, medical devices, defense, global health, social justice, and social enterprise. **They belong on the site and must be carried over from the design.**
+  2. **Applications built during the Codeboxx program** (Rocket Elevators and the other module projects), if and where the student chooses to include them.
+
+  > ⚠️ An earlier revision of this spec labelled the six projects above as "design filler" and instructed that they never be carried over. **That was incorrect and is superseded by this section.** They are the student's real work.
 - **Never carry over the design's Unsplash image URLs.** All images are locally hosted, and the required ones are AI-generated with the tool documented.
 
 ### Resolved content decisions
@@ -228,6 +231,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 ├─ .github/workflows/deploy.yml   # build + deploy to GitHub Pages
 ├─ ai/
 │  ├─ ai-spec.md                  # this document
+│  ├─ design-reference.md         # structure + content captured from Claude Design
 │  └─ features/                   # one spec per feature
 ├─ docs/
 │  ├─ script-1.md
@@ -328,7 +332,7 @@ A visual prototype exists (Figma → Claude Design export, "Nature and technolog
 - [ ] `npm run build` completes without errors and the site is live at `https://FL11024OmeedK.github.io`.
 - [ ] The URL path never becomes `/home`, `/portfolio`, etc. — navigation happens after the `#`, and the served path stays `/`.
 - [ ] Typing `#/login` or `#/backoffice` opens those screens directly, and refreshing any route does not 404.
-- [ ] All portfolio content is factually true; no placeholder projects from the design export remain.
+- [ ] All portfolio content is factually true, and every project on the site traces to the student's real professional history or Codeboxx module work.
 - [ ] Header and footer render on every page; the AI-generated logo links to Home.
 - [ ] Layout is correct on desktop (>768px, horizontal nav) and mobile (≤768px, bottom icon nav) with no horizontal overflow.
 - [ ] Home has ≥3 distinct sections, ≥3 technical skills and ≥3 soft skills (each with supporting text and an icon), and ≥2 AI-generated images.
