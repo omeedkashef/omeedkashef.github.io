@@ -20,6 +20,152 @@
   padding-top: var(--header-h);
 }
 
+/* --- Home: introduction -------------------------------------------------- */
+
+/* Full-bleed image with the text sitting over its lower half, matching the
+   design prototype. The negative top margin pulls the section up under the
+   fixed header so the image runs edge to edge behind it. */
+.home-intro {
+  position: relative;
+  margin-top: calc(var(--header-h) * -1);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.home-intro__media {
+  position: absolute;
+  inset: 0;
+}
+
+.home-intro__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Two gradients, not one. The vertical scrim alone left the eyebrow and role
+   sitting over the brightest part of the image; the horizontal pass creates a
+   quiet reading field on the side the text actually occupies. */
+.home-intro__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 15, 9, 0.88) 0%,
+      rgba(5, 17, 10, 0.6) 45%,
+      rgba(5, 17, 10, 0.12) 82%
+    ),
+    var(--hero-scrim);
+}
+
+.home-intro__content {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--gap-xl) calc(var(--gap-xl) + var(--gap-lg));
+}
+
+.home-intro__name {
+  margin-block: var(--gap-sm) 0;
+}
+
+.home-intro__role {
+  font-size: var(--step-lead);
+  color: var(--accent);
+  margin-top: var(--gap-sm);
+}
+
+.home-intro__lead {
+  max-width: 40rem;
+  margin-top: var(--gap-md);
+  font-size: var(--step-lead);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+  .home-intro {
+    min-height: 88svh;
+  }
+
+  .home-intro__content {
+    padding-block: var(--gap-lg);
+  }
+}
+
+/* --- Home: section headings ---------------------------------------------- */
+
+.home-section__head {
+  margin-bottom: var(--gap-lg);
+}
+
+.home-section__head h2 {
+  margin-top: var(--gap-sm);
+}
+
+/* --- Home: skill cards --------------------------------------------------- */
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  padding: var(--gap-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  height: 100%;
+}
+
+.skill-card__icon {
+  color: var(--primary);
+  line-height: 0;
+}
+
+.skill-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--step-lead);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.skill-card__text {
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+}
+
+/* --- Home: mid-page band image ------------------------------------------- */
+
+.home-band {
+  /* width:100% is load-bearing. With aspect-ratio and max-height alone the box
+     satisfies both by shrinking WIDTH too, so the band stopped short of the
+     viewport on wide screens instead of spanning it. */
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  /* Reserves height before the image decodes, so nothing shifts on load. */
+  aspect-ratio: 21 / 9;
+  max-height: 26rem;
+}
+
+.home-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .home-band {
+    aspect-ratio: 16 / 10;
+  }
+}
+
 /* --- Site header --------------------------------------------------------- */
 
 .site-header {

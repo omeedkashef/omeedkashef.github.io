@@ -206,10 +206,14 @@ The grading sheet requires that the AI tool used for generated imagery be docume
 | Asset | Origin | Counts toward the AI-image requirements? |
 | --- | --- | --- |
 | `logo.png` | **AI-generated — DALL·E (ChatGPT)**. Stylised leaf enclosed in a circle. | Yes — satisfies "Personal Logo (AI)" |
-| `hero.jpg` | **AI-generated — DALL·E (ChatGPT)**. A sustainable city where green towers, solar panels, clean water, and community life coexist with nature. | Yes |
+| `hero.jpg` | **AI-generated — DALL·E (ChatGPT)**. A sustainable city where green towers, solar panels, clean water, and community life coexist with nature. | Yes — Home |
+| `home-collaboration.jpg` | **AI-generated — DALL·E (ChatGPT)**. A sunlit workspace open to a forest canopy, people collaborating around a screen of system diagrams. | Yes — Home |
+| `portfolio-education.jpg` | **AI-generated — DALL·E (ChatGPT)**. An open study space with engineering texts and models, overlooking trees. | Yes — Portfolio |
+| `portfolio-projects.jpg` | **AI-generated — DALL·E (ChatGPT)**. A workbench where circuit boards and prototypes sit among growing plants. | Yes — Portfolio |
+| `link-linkedin.jpg`, `link-github.jpg`, `link-coursera.jpg`, `link-figma.jpg` | **AI-generated — DALL·E (ChatGPT)**. Card thumbnails for the Links page, one per destination. | Yes — Links |
 | `tech-in-nature.jpg`, `circuit-amber.jpg`, `analytics-dashboard.jpg`, `forest-sunset.jpg`, `urban-greenery.jpg`, `solar-architecture.jpg`, `forest-canopy.jpg` | **Stock photography.** Carried over from the Claude Design prototype, which sourced them from Unsplash. Downloaded and hosted locally so no remote URL remains, but **not AI-generated.** | **No** |
 
-> ⚠️ **Known shortfall.** The grading sheet requires at least 2 AI-generated images on Home, at least 2 on Portfolio, and at least 1 on Links. Only two genuine AI-generated images currently exist (`logo.png` and `hero.jpg`). More must be generated with DALL·E before those page features can satisfy their image requirements. The seven stock photographs above must not be presented as AI-generated.
+> ✅ **Shortfall closed.** The grading sheet requires at least 2 AI-generated images on Home, at least 2 on Portfolio, and at least 1 on Links. Nine AI-generated images now exist, covering all three pages with margin. The seven stock photographs above are used only as project thumbnails on the Portfolio page and **must not be presented as AI-generated** — the Portfolio requirement is met by `portfolio-education.jpg` and `portfolio-projects.jpg`.
 
 Alt text for every image describes the image content and is written per-page by the feature that places it.
 
