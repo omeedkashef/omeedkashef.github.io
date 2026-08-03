@@ -295,6 +295,89 @@
   color: var(--fg-muted);
 }
 
+/* --- Links page ---------------------------------------------------------- */
+
+.links-intro {
+  max-width: 40rem;
+  margin-top: var(--gap-md);
+}
+
+/* The header section already supplies bottom spacing, so the grid section
+   should not add a second full gap on top of it.
+
+   Two classes deliberately: `.section` is declared later in this file, so a
+   single-class selector here would lose the tie on source order and the
+   override would silently do nothing. */
+.section.links-section {
+  padding-top: 0;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  height: 100%;
+  color: inherit;
+  transition:
+    border-color var(--t-fast),
+    transform var(--t-fast);
+}
+
+.link-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+.link-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--gap-md);
+  flex: 1;
+}
+
+.link-card__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-sm);
+  font-family: var(--font-heading);
+  font-size: var(--step-title);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.link-card__arrow {
+  font-size: var(--step-body);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.link-card:hover .link-card__arrow {
+  color: var(--accent);
+}
+
+.link-card__text {
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+}
+
+/* Pushed to the bottom so hosts line up across cards of differing text length. */
+.link-card__host {
+  margin-top: auto;
+  padding-top: var(--gap-sm);
+  font-size: var(--step-xs);
+  color: var(--primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* --- Site header --------------------------------------------------------- */
 
 .site-header {
