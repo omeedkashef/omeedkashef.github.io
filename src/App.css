@@ -441,6 +441,39 @@
   }
 }
 
+/* --- Login page ---------------------------------------------------------- */
+
+.login {
+  max-width: 26rem;
+}
+
+.login__intro {
+  margin-top: var(--gap-md);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  margin-top: var(--gap-lg);
+}
+
+.login__form label {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.login__submit {
+  align-self: flex-start;
+}
+
+/* Reserved so the layout does not shift when the error appears. */
+.login__feedback {
+  min-height: 1.5rem;
+}
+
 /* --- Site header --------------------------------------------------------- */
 
 .site-header {
