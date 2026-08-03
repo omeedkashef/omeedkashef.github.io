@@ -197,6 +197,22 @@ Each needs an icon and supporting text. Every one below is evidenced by a real l
 
 A visual prototype exists (Figma → Claude Design export, "Nature and technology in harmony"): a dark, nature-toned design system with CSS custom properties. Its **look and tokens** are a good foundation. Its **structure is not** — it is a single-page scroller with Work/About/Contact only. It is missing the Links page, the education section, the soft-skills section, the resume download button, the AI-generated logo, the footer copyright notice, and the mobile bottom icon navigation. Treat the design as styling reference, and this specification as the source of truth for structure and content.
 
+### AI-generated assets and tool attribution
+
+The grading sheet requires that the AI tool used for generated imagery be documented. **This table is that documentation.** Every image shipped in `src/assets/` is listed, with an honest statement of its origin.
+
+**AI tool used: DALL·E, via ChatGPT (OpenAI).**
+
+| Asset | Origin | Counts toward the AI-image requirements? |
+| --- | --- | --- |
+| `logo.png` | **AI-generated — DALL·E (ChatGPT)**. Stylised leaf enclosed in a circle. | Yes — satisfies "Personal Logo (AI)" |
+| `hero.jpg` | **AI-generated — DALL·E (ChatGPT)**. A sustainable city where green towers, solar panels, clean water, and community life coexist with nature. | Yes |
+| `tech-in-nature.jpg`, `circuit-amber.jpg`, `analytics-dashboard.jpg`, `forest-sunset.jpg`, `urban-greenery.jpg`, `solar-architecture.jpg`, `forest-canopy.jpg` | **Stock photography.** Carried over from the Claude Design prototype, which sourced them from Unsplash. Downloaded and hosted locally so no remote URL remains, but **not AI-generated.** | **No** |
+
+> ⚠️ **Known shortfall.** The grading sheet requires at least 2 AI-generated images on Home, at least 2 on Portfolio, and at least 1 on Links. Only two genuine AI-generated images currently exist (`logo.png` and `hero.jpg`). More must be generated with DALL·E before those page features can satisfy their image requirements. The seven stock photographs above must not be presented as AI-generated.
+
+Alt text for every image describes the image content and is written per-page by the feature that places it.
+
 ---
 
 ## Tech Stack and Tools
