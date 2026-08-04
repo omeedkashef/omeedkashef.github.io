@@ -8,27 +8,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
 
 :root {
-  /* --- Colour ------------------------------------------------------------ */
+  /* --- Colour ------------------------------------------------------------
+     The dark palette lives on bare :root, so it stays the fallback if the
+     theme script never runs. The light palette overrides the same names
+     below — see "Theming" at the end of this block. Components consume these
+     names only; they never learn which theme is active. */
   --bg: #0b1610;             /* deep forest — page base                      */
   --surface: #162419;        /* image wells, muted panels                    */
   --fg: #d6ecd8;             /* pale green — primary text                    */
   --fg-muted: #7a9e82;       /* sage — secondary text                        */
   --primary: #4fa874;        /* green — links, focus, primary actions        */
   --accent: #c89a2e;         /* gold — emphasis, hover, category labels      */
+  --danger: #d9534f;         /* form errors, destructive actions             */
+  --danger-hover: #ff6b66;
 
   --border: rgba(79, 168, 116, 0.16);
   --placeholder: rgba(122, 158, 130, 0.4);
   --selection: rgba(79, 168, 116, 0.3);
   --nav-solid: rgba(11, 22, 16, 0.9);
   --overlay: rgba(11, 22, 16, 0.15);
+  --scrim: rgba(4, 12, 8, 0.75);   /* modal backdrop                         */
 
   /* Hero scrim — light at the top so the image reads, dense at the bottom so
-     the headline stays legible over it. */
+     the headline stays legible over it. The horizontal pass creates a quiet
+     reading field on the side the text actually occupies. */
   --hero-scrim: linear-gradient(
     180deg,
     rgba(9, 19, 13, 0.62) 0%,
     rgba(11, 22, 16, 0.55) 50%,
     rgba(11, 22, 16, 0.93) 100%
+  );
+  --hero-scrim-x: linear-gradient(
+    90deg,
+    rgba(4, 15, 9, 0.88) 0%,
+    rgba(5, 17, 10, 0.6) 45%,
+    rgba(5, 17, 10, 0.12) 82%
   );
 
   /* --- Type -------------------------------------------------------------- */
@@ -70,6 +84,7 @@
   --t-fast: 200ms;
   --t-slow: 500ms;
   --t-image: 700ms;
+  --t-theme: 250ms;  /* colour cross-fade when the theme is switched */
 
   /* --- Breakpoint --------------------------------------------------------
      Custom properties cannot be used inside media queries, so 768px is
@@ -78,6 +93,120 @@
   --bp-mobile: 768px;
 
   color-scheme: dark;
+}
+
+/* --- Theming -------------------------------------------------------------
+   The light palette. Same token names at inverted lightness, keeping the
+   forest-and-gold identity — this is not a second design, it is the same one
+   seen in daylight.
+
+   Two selectors carry it, and they are not interchangeable:
+
+     :root[data-theme='light']            an explicit choice, set by the theme
+                                          script or the header toggle
+     :root:not([data-theme]) in a
+       prefers-color-scheme: light query  no choice made yet, so follow the OS.
+                                          Also the no-JavaScript path, where
+                                          data-theme is never set at all.
+
+   The dark case needs no override: with data-theme='dark' the media block is
+   excluded by :not([data-theme]), so the bare :root palette above applies.
+
+   Green and gold are darkened here. #4fa874 and #c89a2e are tuned for a near
+   black background and fall to roughly 2:1 against a near white one; the
+   values below hold WCAG AA. --selection keeps the lighter green because it
+   sits behind text as a wash, not as text. */
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #f5f8f3;
+    --surface: #e7eee6;
+    --fg: #12241a;
+    --fg-muted: #4a6552;
+    --primary: #2d7449;
+    --accent: #8a6414;
+    --danger: #b3312d;
+    --danger-hover: #8f2320;
+
+    --border: rgba(47, 122, 79, 0.22);
+    --placeholder: rgba(74, 101, 82, 0.55);
+    --selection: rgba(79, 168, 116, 0.28);
+    --nav-solid: rgba(245, 248, 243, 0.9);
+    --overlay: rgba(18, 36, 26, 0.08);
+    --scrim: rgba(18, 36, 26, 0.45);
+
+    /* Inverted so the hero headline, now dark, reads over the photograph. */
+    --hero-scrim: linear-gradient(
+      180deg,
+      rgba(245, 248, 243, 0.45) 0%,
+      rgba(245, 248, 243, 0.6) 50%,
+      rgba(245, 248, 243, 0.94) 100%
+    );
+    --hero-scrim-x: linear-gradient(
+      90deg,
+      rgba(245, 248, 243, 0.9) 0%,
+      rgba(245, 248, 243, 0.62) 45%,
+      rgba(245, 248, 243, 0.14) 82%
+    );
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme='light'] {
+  --bg: #f5f8f3;
+  --surface: #e7eee6;
+  --fg: #12241a;
+  --fg-muted: #4a6552;
+  --primary: #2d7449;
+  --accent: #8a6414;
+  --danger: #b3312d;
+  --danger-hover: #8f2320;
+
+  --border: rgba(47, 122, 79, 0.22);
+  --placeholder: rgba(74, 101, 82, 0.55);
+  --selection: rgba(79, 168, 116, 0.28);
+  --nav-solid: rgba(245, 248, 243, 0.9);
+  --overlay: rgba(18, 36, 26, 0.08);
+  --scrim: rgba(18, 36, 26, 0.45);
+
+  --hero-scrim: linear-gradient(
+    180deg,
+    rgba(245, 248, 243, 0.45) 0%,
+    rgba(245, 248, 243, 0.6) 50%,
+    rgba(245, 248, 243, 0.94) 100%
+  );
+  --hero-scrim-x: linear-gradient(
+    90deg,
+    rgba(245, 248, 243, 0.9) 0%,
+    rgba(245, 248, 243, 0.62) 45%,
+    rgba(245, 248, 243, 0.14) 82%
+  );
+
+  color-scheme: light;
+}
+
+/* The switch itself. Applied as a class for the duration of a toggle rather
+   than as a standing transition on *, which would fight the hover and focus
+   transitions already declared on links, cards and buttons.
+
+   Scoped to no-preference rather than left to the reduced-motion block at the
+   foot of this file: both rules are !important, so the loser would be decided
+   by source order instead of by intent. */
+@media (prefers-reduced-motion: no-preference) {
+  :root.theme-transition,
+  :root.theme-transition *,
+  :root.theme-transition *::before,
+  :root.theme-transition *::after {
+    transition:
+      background-color var(--t-theme) ease,
+      background-image var(--t-theme) ease,
+      border-color var(--t-theme) ease,
+      color var(--t-theme) ease,
+      fill var(--t-theme) ease,
+      stroke var(--t-theme) ease !important;
+    transition-delay: 0s !important;
+  }
 }
 
 /* --- Reset / base -------------------------------------------------------- */

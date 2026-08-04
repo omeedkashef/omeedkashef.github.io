@@ -49,18 +49,12 @@
 
 /* Two gradients, not one. The vertical scrim alone left the eyebrow and role
    sitting over the brightest part of the image; the horizontal pass creates a
-   quiet reading field on the side the text actually occupies. */
+   quiet reading field on the side the text actually occupies. Both flip with
+   the theme so the headline keeps its contrast against the photograph. */
 .home-intro__scrim {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(4, 15, 9, 0.88) 0%,
-      rgba(5, 17, 10, 0.6) 45%,
-      rgba(5, 17, 10, 0.12) 82%
-    ),
-    var(--hero-scrim);
+  background: var(--hero-scrim-x), var(--hero-scrim);
 }
 
 .home-intro__content {
@@ -696,11 +690,11 @@
 }
 
 .table-action--danger {
-  color: #d9534f;
+  color: var(--danger);
 }
 
 .table-action--danger:hover {
-  color: #ff6b66;
+  color: var(--danger-hover);
 }
 
 .table-action:disabled {
@@ -717,7 +711,7 @@
   display: grid;
   place-items: center;
   padding: var(--gutter);
-  background: rgba(4, 12, 8, 0.75);
+  background: var(--scrim);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -827,6 +821,43 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Groups the nav and the theme toggle at the right end of the header. Keeping
+   the toggle outside .site-nav is what lets it survive the mobile breakpoint,
+   where .site-nav is hidden. */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  min-width: 0;
+}
+
+/* --- Theme toggle -------------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* 40px: comfortably past the 24px minimum target size, without making the
+     56px header feel crowded. */
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--border);
 }
 
 /* --- Desktop navigation (>768px) ----------------------------------------- */
@@ -1141,12 +1172,12 @@
 /* Validation states — the contact form needs visibly distinct feedback. */
 .field--invalid input,
 .field--invalid textarea {
-  border-bottom-color: #d9534f;
+  border-bottom-color: var(--danger);
 }
 
 .field-error {
   font-size: var(--step-xs);
-  color: #d9534f;
+  color: var(--danger);
 }
 
 .form-status--success {
@@ -1154,7 +1185,7 @@
 }
 
 .form-status--error {
-  color: #d9534f;
+  color: var(--danger);
 }
 
 /* --- Tags ---------------------------------------------------------------- */

@@ -179,6 +179,28 @@ export function StrategyIcon() {
   )
 }
 
+/* --- Theme icons ----------------------------------------------------------
+   Used by the header's light/dark toggle. The icon shown is the theme the
+   button switches TO, not the one currently active. */
+
+export function SunIcon() {
+  return (
+    <svg {...base} width="18" height="18">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5" />
+      <path d="m5.3 5.3 1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8" />
+    </svg>
+  )
+}
+
+export function MoonIcon() {
+  return (
+    <svg {...base} width="18" height="18">
+      <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" />
+    </svg>
+  )
+}
+
 /* --- Feedback icons -------------------------------------------------------
    Used by the contact form's success and failure states. Sized to sit inline
    with a line of body text. */
