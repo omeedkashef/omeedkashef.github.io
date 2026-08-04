@@ -1,0 +1,1227 @@
+/* ---------------------------------------------------------------------------
+   Layout primitives, built on the tokens in index.css.
+   These are the shared building blocks every page composes from — the pages
+   themselves own their content, not their chrome.
+   --------------------------------------------------------------------------- */
+
+/* --- App shell ----------------------------------------------------------- */
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clears the fixed header. The matching bottom clearance lives on .site-footer,
+   not here — the footer renders after <main>, so padding on main would leave the
+   last footer line sitting under the fixed mobile nav. */
+.app-main {
+  flex: 1;
+  padding-top: var(--header-h);
+}
+
+/* --- Home: introduction -------------------------------------------------- */
+
+/* Full-bleed image with the text sitting over its lower half, matching the
+   design prototype. The negative top margin pulls the section up under the
+   fixed header so the image runs edge to edge behind it. */
+.home-intro {
+  position: relative;
+  margin-top: calc(var(--header-h) * -1);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.home-intro__media {
+  position: absolute;
+  inset: 0;
+}
+
+.home-intro__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Two gradients, not one. The vertical scrim alone left the eyebrow and role
+   sitting over the brightest part of the image; the horizontal pass creates a
+   quiet reading field on the side the text actually occupies. Both flip with
+   the theme so the headline keeps its contrast against the photograph. */
+.home-intro__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-scrim-x), var(--hero-scrim);
+}
+
+.home-intro__content {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--gap-xl) var(--gap-lg);
+}
+
+.home-intro__name {
+  max-width: 64rem;
+  margin-top: var(--gap-md);
+  font-size: clamp(3.25rem, 6.5vw, 6.75rem);
+  line-height: 1.02;
+}
+
+.home-intro__lead {
+  max-width: 52rem;
+  margin-top: var(--gap-md);
+  font-size: clamp(1rem, 1.55vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+  .home-intro {
+    min-height: 88svh;
+  }
+
+  .home-intro__content {
+    padding-block: var(--gap-lg);
+  }
+
+  .home-intro__name {
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+  }
+
+  .home-intro__lead {
+    margin-top: var(--gap-md);
+    font-size: var(--step-lead);
+  }
+}
+
+/* --- Home: background and domain experience ----------------------------- */
+
+.home-background {
+  padding-block: var(--section-y);
+}
+
+.home-background__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(var(--gap-lg), 7vw, var(--gap-xl));
+  align-items: start;
+}
+
+.home-background__story h2 {
+  max-width: 34rem;
+}
+
+.home-background__copy {
+  display: grid;
+  gap: var(--gap-md);
+  margin-top: var(--gap-md);
+  max-width: 34rem;
+  color: var(--fg-muted);
+  line-height: var(--lh-loose);
+}
+
+.home-background__expertise {
+  margin-top: var(--gap-lg);
+}
+
+.home-background__image {
+  aspect-ratio: 1;
+  margin: 0 0 var(--gap-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.home-background__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+}
+
+.experience-list {
+  margin: var(--gap-sm) 0 0;
+}
+
+.experience-list__row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--gap-md);
+  padding-block: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.experience-list dt,
+.experience-list dd {
+  margin: 0;
+}
+
+.experience-list dt {
+  color: var(--fg);
+  font-size: var(--step-sm);
+  font-weight: 500;
+}
+
+.experience-list dd {
+  color: var(--fg-muted);
+  font-size: var(--step-xs);
+  text-align: right;
+}
+
+.experience-list--stacked .experience-list__row {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.experience-list--stacked dd {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .home-background {
+    padding-block: var(--gap-xl);
+  }
+
+  .home-background__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-background__domains {
+    display: contents;
+  }
+
+  .home-background__image {
+    margin: 0;
+  }
+
+  .experience-list__row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .experience-list dd {
+    text-align: left;
+  }
+}
+
+/* --- Home: section headings ---------------------------------------------- */
+
+.home-section__head {
+  margin-bottom: var(--gap-lg);
+}
+
+.home-section__head h2 {
+  margin-top: var(--gap-sm);
+}
+
+/* --- Home: skill cards --------------------------------------------------- */
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  padding: var(--gap-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  height: 100%;
+}
+
+.skill-card__icon {
+  color: var(--primary);
+  line-height: 0;
+}
+
+.skill-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--step-lead);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.skill-card__text {
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+}
+
+/* --- Home: mid-page band image ------------------------------------------- */
+
+.home-band {
+  /* width:100% is load-bearing. With aspect-ratio and max-height alone the box
+     satisfies both by shrinking WIDTH too, so the band stopped short of the
+     viewport on wide screens instead of spanning it. */
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  /* Reserves height before the image decodes, so nothing shifts on load. */
+  aspect-ratio: 21 / 9;
+  max-height: 26rem;
+}
+
+.home-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .home-band {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* --- Portfolio ----------------------------------------------------------- */
+
+.portfolio-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.portfolio-section__title {
+  margin-top: var(--gap-sm);
+  margin-bottom: var(--gap-lg);
+}
+
+/* Resume-style entry rows: meta on the left, detail on the right, collapsing
+   to a single column on narrow screens. */
+.entry-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: var(--gap-md);
+  padding-block: var(--gap-md);
+  border-top: 1px solid var(--border);
+}
+
+.entry__dates {
+  font-size: var(--step-xs);
+  color: var(--primary);
+}
+
+.entry__org {
+  font-size: var(--step-sm);
+  color: var(--fg-muted);
+  margin-top: 2px;
+}
+
+.entry__title {
+  font-family: var(--font-heading);
+  font-size: var(--step-lead);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.entry__text {
+  margin-top: var(--gap-sm);
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+  max-width: 46rem;
+}
+
+@media (max-width: 768px) {
+  .entry {
+    grid-template-columns: 1fr;
+    gap: var(--gap-xs);
+  }
+}
+
+/* Full-bleed band between sections, same treatment as Home. */
+.portfolio-band {
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  aspect-ratio: 21 / 9;
+  max-height: 22rem;
+}
+
+.portfolio-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .portfolio-band {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  height: 100%;
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--gap-md);
+}
+
+.project-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--step-lead);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.project-card__domain {
+  font-size: var(--step-xs);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.project-card__tags {
+  gap: var(--gap-xs);
+  margin-top: 2px;
+}
+
+.project-card__text {
+  margin-top: var(--gap-xs);
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+}
+
+/* --- Links page ---------------------------------------------------------- */
+
+.links-intro {
+  max-width: 40rem;
+  margin-top: var(--gap-md);
+}
+
+/* The header section already supplies bottom spacing, so the grid section
+   should not add a second full gap on top of it.
+
+   Two classes deliberately: `.section` is declared later in this file, so a
+   single-class selector here would lose the tie on source order and the
+   override would silently do nothing. */
+.section.links-section {
+  padding-top: 0;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  height: 100%;
+  color: inherit;
+  transition:
+    border-color var(--t-fast),
+    transform var(--t-fast);
+}
+
+.link-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+.link-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--gap-md);
+  flex: 1;
+}
+
+.link-card__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-sm);
+  font-family: var(--font-heading);
+  font-size: var(--step-title);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.link-card__arrow {
+  font-size: var(--step-body);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.link-card:hover .link-card__arrow {
+  color: var(--accent);
+}
+
+.link-card__text {
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+}
+
+/* Pushed to the bottom so hosts line up across cards of differing text length. */
+.link-card__host {
+  margin-top: auto;
+  padding-top: var(--gap-sm);
+  font-size: var(--step-xs);
+  color: var(--primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Contact page -------------------------------------------------------- */
+
+.contact-layout {
+  gap: var(--gap-xl);
+}
+
+.contact-layout h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+}
+
+.contact-intro {
+  margin-top: var(--gap-md);
+  max-width: 34rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  margin-top: var(--gap-lg);
+  padding-top: var(--gap-md);
+  border-top: 1px solid var(--border);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+.contact-form label {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.contact-submit {
+  align-self: flex-start;
+}
+
+/* Reserved so the layout does not jump when a banner appears or clears. */
+.contact-feedback {
+  min-height: 1.5rem;
+}
+
+.form-status {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  font-size: var(--step-sm);
+}
+
+.form-status svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-layout {
+    gap: var(--gap-lg);
+  }
+
+  .contact-details {
+    margin-top: var(--gap-md);
+  }
+}
+
+/* --- Login page ---------------------------------------------------------- */
+
+.login {
+  max-width: 26rem;
+}
+
+.login__intro {
+  margin-top: var(--gap-md);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  margin-top: var(--gap-lg);
+}
+
+.login__form label {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.login__submit {
+  align-self: flex-start;
+}
+
+/* Reserved so the layout does not shift when the error appears. */
+.login__feedback {
+  min-height: 1.5rem;
+}
+
+/* --- Back office --------------------------------------------------------- */
+
+.backoffice-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-md);
+  margin-bottom: var(--gap-lg);
+}
+
+.backoffice-logout {
+  border: 1px solid var(--border);
+  padding: 0.5rem 1.1rem;
+}
+
+.backoffice-alert,
+.backoffice-empty {
+  margin-bottom: var(--gap-md);
+}
+
+.backoffice-empty {
+  color: var(--fg-muted);
+}
+
+/* The table scrolls inside this, so a narrow viewport never scrolls the page. */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+.messages-table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: var(--step-sm);
+}
+
+.messages-table th {
+  text-align: left;
+  font-size: var(--step-xs);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: var(--gap-sm) var(--gap-md);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.messages-table td {
+  padding: var(--gap-sm) var(--gap-md);
+  border-bottom: 1px solid var(--border);
+  color: var(--fg);
+  vertical-align: middle;
+}
+
+.messages-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.messages-table__row {
+  cursor: pointer;
+  transition: background-color var(--t-fast);
+}
+
+.messages-table__row:hover {
+  background: var(--surface);
+}
+
+.messages-table__muted {
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.messages-table__actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.messages-table__controls {
+  justify-content: flex-end;
+  gap: var(--gap-sm);
+  flex-wrap: nowrap;
+}
+
+.table-action {
+  font-size: var(--step-xs);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.table-action:hover {
+  color: var(--accent);
+}
+
+.table-action--danger {
+  color: var(--danger);
+}
+
+.table-action--danger:hover {
+  color: var(--danger-hover);
+}
+
+.table-action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- Modal --------------------------------------------------------------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  background: var(--scrim);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.modal {
+  width: 100%;
+  max-width: 34rem;
+  max-height: 80svh;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: var(--gap-md);
+}
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-md);
+  padding-bottom: var(--gap-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__name {
+  font-family: var(--font-heading);
+  font-size: var(--step-title);
+  font-weight: 500;
+  color: var(--fg);
+  margin: 0;
+}
+
+.modal__meta {
+  margin-top: 4px;
+  font-size: var(--step-xs);
+  color: var(--fg-muted);
+}
+
+.modal__close {
+  flex-shrink: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--fg-muted);
+  display: inline-flex;
+  padding: 4px;
+}
+
+.modal__close:hover {
+  color: var(--fg);
+}
+
+.modal__body {
+  margin-top: var(--gap-md);
+  font-size: var(--step-sm);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+  white-space: pre-wrap;
+}
+
+/* --- Site header --------------------------------------------------------- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--nav-solid);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  color: var(--fg);
+  min-width: 0; /* lets the name truncate instead of pushing the nav off-screen */
+}
+
+.site-header__brand:hover {
+  color: var(--primary);
+}
+
+.site-header__logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.site-header__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Groups the nav and the theme toggle at the right end of the header. Keeping
+   the toggle outside .site-nav is what lets it survive the mobile breakpoint,
+   where .site-nav is hidden. */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  min-width: 0;
+}
+
+/* --- Theme toggle -------------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* 40px: comfortably past the 24px minimum target size, without making the
+     56px header feel crowded. */
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--border);
+}
+
+/* --- Desktop navigation (>768px) ----------------------------------------- */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+}
+
+.site-nav__link {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  padding-block: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav__link:hover {
+  color: var(--fg);
+}
+
+.site-nav__link--active {
+  color: var(--fg);
+  border-bottom-color: var(--primary);
+}
+
+/* Below the breakpoint the header keeps only the brand — MobileNav takes over. */
+@media (max-width: 768px) {
+  .site-nav {
+    display: none;
+  }
+}
+
+/* --- Mobile bottom navigation (<=768px) ---------------------------------- */
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: var(--mobile-nav-h);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--nav-solid);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    /* Keeps the bar clear of the iOS home indicator. */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .mobile-nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--fg-muted);
+    min-width: 0;
+  }
+
+  .mobile-nav__link--active {
+    color: var(--primary);
+  }
+
+  .mobile-nav__label {
+    font-size: 0.625rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+/* --- Site footer --------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding-block: var(--gap-lg);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.site-footer__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--fg);
+}
+
+.site-footer__tagline,
+.site-footer__copyright {
+  font-size: var(--step-xs);
+  color: var(--fg-muted);
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  font-size: var(--step-xs);
+}
+
+.site-footer__contact a {
+  color: var(--fg-muted);
+}
+
+.site-footer__contact a:hover {
+  color: var(--primary);
+}
+
+/* Stack the footer into a single readable column on narrow screens, and clear
+   the fixed bottom nav. The footer is the last element in flow, so this is what
+   keeps the copyright line from being covered. */
+@media (max-width: 768px) {
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+  }
+
+  .site-footer {
+    padding-bottom: calc(var(--gap-lg) + var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* --- Container and sections ---------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: calc(var(--section-y) / 2);
+  }
+}
+
+/* Two-column split that collapses on narrow screens without a media query. */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--gap-xl);
+  align-items: start;
+}
+
+/* Card grid — auto-fit means it reflows from three columns to one with no
+   breakpoints and no overflow. */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap-lg);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* --- Type helpers -------------------------------------------------------- */
+
+.eyebrow {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.label {
+  font-size: var(--step-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.lead {
+  font-size: var(--step-lead);
+  font-weight: 300;
+  color: var(--fg-muted);
+  line-height: var(--lh-body);
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  font-size: var(--step-body);
+  font-weight: 300;
+  line-height: var(--lh-loose);
+  color: var(--fg-muted);
+}
+
+.meta {
+  font-size: var(--step-xs);
+  color: var(--fg-muted);
+}
+
+/* --- Images -------------------------------------------------------------- */
+
+/* Fixed-ratio well: reserves space before the image loads, so nothing shifts. */
+.media {
+  overflow: hidden;
+  background: var(--surface);
+  aspect-ratio: 4 / 3;
+}
+
+.media--wide {
+  aspect-ratio: 3 / 2;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-image);
+}
+
+.media--zoom:hover img {
+  transform: scale(1.04);
+}
+
+/* --- Buttons and actions ------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  padding: 0.65rem 1.5rem;
+  border: 0;
+  font-size: var(--step-body);
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  background: var(--primary);
+  cursor: pointer;
+  transition: opacity var(--t-fast);
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn--ghost {
+  padding: 0;
+  color: var(--primary);
+  background: transparent;
+}
+
+.btn--ghost:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- Forms --------------------------------------------------------------- */
+
+/* The prototype's signature field treatment: no box, just a hairline that
+   lights up green on focus. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+.field input,
+.field textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg);
+  padding-bottom: 8px;
+  font-size: var(--step-body);
+  font-weight: 300;
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-bottom-color: var(--primary);
+}
+
+/* Validation states — the contact form needs visibly distinct feedback. */
+.field--invalid input,
+.field--invalid textarea {
+  border-bottom-color: var(--danger);
+}
+
+.field-error {
+  font-size: var(--step-xs);
+  color: var(--danger);
+}
+
+.form-status--success {
+  color: var(--primary);
+}
+
+.form-status--error {
+  color: var(--danger);
+}
+
+/* --- Tags ---------------------------------------------------------------- */
+
+.tag {
+  font-size: var(--step-xs);
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  letter-spacing: 0.03em;
+}
+
+/* --- Utilities ----------------------------------------------------------- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+  flex-wrap: wrap;
+}
+
+/* Screen-reader-only text, for icon-only controls in the mobile nav. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1610" />
+    <title>Omeed Kashef — Portfolio</title>
+
+    <!--
+      Applies the theme before the first paint. Inline and blocking on purpose:
+      a module script runs after the first paint, so a visitor who chose light
+      would see one dark frame first.
+
+      This mirrors resolveTheme() and applyTheme() in src/lib/theme.js — stored
+      choice, else the OS preference, else dark. Kept deliberately small; the
+      real logic lives in that module.
+    -->
+    <script>
+      ;(function () {
+        var stored = null
+        try {
+          stored = localStorage.getItem('theme')
+        } catch {
+          /* storage blocked — fall through to the OS preference */
+        }
+        var theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark'
+
+        document.documentElement.dataset.theme = theme
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute('content', theme === 'light' ? '#f5f8f3' : '#0b1610')
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

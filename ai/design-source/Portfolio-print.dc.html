@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+  CAPTURED REFERENCE — not part of the build.
+  Source: Claude Design project "Nature and technology in harmony",
+          file Portfolio-print.dc.html, captured 2026-08-03.
+
+  This is the print/PDF translation of the 1st-generation design. It will not
+  render standalone: it depends on support.js and doc-page.js from the design
+  tool, which are not vendored here.
+
+  Kept for two things:
+    1. Its LIGHT-MODE palette (see ai/design-reference.md) — the only light
+       theme the design produced, useful for the light/dark Extra Mile.
+    2. The full prose of the six Set A project descriptions.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<script src="./doc-page.js"></script>
+<style>
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  * { animation-delay: -99s !important; animation-duration: .001s !important;
+      animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+      animation-play-state: running !important; transition-duration: 0s !important; }
+  doc-page:not(:defined) { visibility: hidden; }
+  body { margin: 0; font-family: 'DM Sans', system-ui, sans-serif; color: #16241b; }
+  a { color: #2f6b4a; text-decoration: none; }
+  a:hover { color: #8a6a12; }
+</style>
+</helmet>
+
+<doc-page margin="0.7in">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:1px solid rgba(22,36,27,0.2); padding-bottom:10px; margin-bottom:22px">
+    <span style="font-family:Lora,Georgia,serif; font-size:15pt; color:#16241b">Omeed Kashef</span>
+    <span style="font-size:8.5pt; letter-spacing:0.14em; text-transform:uppercase; color:#5c7a63">Systems · Product · UX · Engineering</span>
+  </div>
+
+  <div style="break-inside:avoid; margin-bottom:26px">
+    <img src="assets/hero.jpg" alt="A thriving sustainable city where green towers, solar panels, clean water, and community life coexist with nature" style="width:100%; height:2.5in; object-fit:cover; display:block" />
+  </div>
+
+  <h1 style="font-family:Lora,Georgia,serif; font-size:30pt; font-weight:400; line-height:1.1; letter-spacing:-0.01em; color:#16241b; margin:0 0 14px">Complex systems,<br /><em style="font-style:italic; color:#8a6a12">built for people.</em></h1>
+  <p style="font-size:11pt; font-weight:300; line-height:1.6; color:#3c5544; margin:0 0 8px; max-width:34em">Systems engineer and product leader with deep experience in autonomous vehicles, medical devices, and defense with a new focus on global health, social justice, and sustainable technology.</p>
+  <p style="font-size:10pt; color:#5c7a63; margin:0 0 30px">omeedkashef@gmail.com</p>
+
+  <h2 style="font-family:Lora,Georgia,serif; font-size:13pt; font-weight:500; margin:0 0 4px; color:#16241b">Rigor from high-stakes systems, <em style="font-style:italic; color:#8a6a12">directed toward impact.</em></h2>
+  <div style="border-top:1px solid rgba(22,36,27,0.16); padding-top:12px; margin-bottom:26px; column-count:2; column-gap:28px; font-size:10pt; font-weight:300; line-height:1.65; color:#3c5544">
+    <p style="margin:0 0 10px">My background sits at the intersection of systems engineering, UX, software development, and product management. I've spent years in domains where the margin for error is effectively zero — autonomous vehicles, FDA-regulated medical devices, and defense systems.</p>
+    <p style="margin:0 0 10px">That experience shaped how I think about complexity: requirements traceability, failure mode analysis, human factors in high-cognitive-load environments. I'm now applying that rigor to problems that matter most to me — global health equity, social justice, and ventures built around social value.</p>
+    <p style="margin:0">I believe technology and the natural world don't have to be in conflict. The most durable systems are the ones that work with nature's logic, not against it.</p>
+  </div>
+
+  <h2 style="font-family:Lora,Georgia,serif; font-size:13pt; font-weight:500; margin:0 0 4px; color:#16241b">Expertise</h2>
+  <table style="width:100%; border-collapse:collapse; margin-bottom:26px; font-size:10pt">
+    <tbody>
+      <sc-for list="{{ expertise }}" as="e" hint-placeholder-count="4">
+        <tr style="break-inside:avoid">
+          <td style="border-top:1px solid rgba(22,36,27,0.16); padding:7px 12px 7px 0; width:38%; font-weight:500; color:#16241b">{{ e.area }}</td>
+          <td style="border-top:1px solid rgba(22,36,27,0.16); padding:7px 0; font-weight:300; color:#5c7a63">{{ e.detail }}</td>
+        </tr>
+      </sc-for>
+    </tbody>
+  </table>
+
+  <h2 style="font-family:Lora,Georgia,serif; font-size:13pt; font-weight:500; margin:0 0 4px; color:#16241b">Domain experience</h2>
+  <table style="width:100%; border-collapse:collapse; margin-bottom:30px; font-size:10pt">
+    <tbody>
+      <sc-for list="{{ domains }}" as="d" hint-placeholder-count="6">
+        <tr style="break-inside:avoid">
+          <td style="border-top:1px solid rgba(22,36,27,0.16); padding:7px 12px 7px 0; width:38%; color:#16241b">{{ d.name }}</td>
+          <td style="border-top:1px solid rgba(22,36,27,0.16); padding:7px 0; font-weight:300; color:#5c7a63">{{ d.note }}</td>
+        </tr>
+      </sc-for>
+    </tbody>
+  </table>
+
+  <h2 style="font-family:Lora,Georgia,serif; font-size:16pt; font-weight:400; margin:0 0 4px; color:#16241b; break-before:page">Selected work</h2>
+  <p style="font-size:9pt; letter-spacing:0.1em; color:#5c7a63; margin:0 0 18px">2021 – 2024</p>
+
+  <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+    <div style="break-inside:avoid; display:grid; grid-template-columns:1.7in 1fr; gap:18px; align-items:start; border-top:1px solid rgba(22,36,27,0.16); padding:14px 0">
+      <img src="{{ p.img }}" alt="{{ p.alt }}" style="width:100%; height:1.28in; object-fit:cover; display:block; background:#e6ebe6" />
+      <div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px">
+          <span style="font-family:Lora,Georgia,serif; font-size:12pt; font-weight:500; color:#16241b">{{ p.title }}</span>
+          <span style="font-size:9pt; color:#5c7a63">{{ p.year }}</span>
+        </div>
+        <div style="font-size:9pt; font-weight:500; color:#8a6a12; margin:3px 0 6px">{{ p.domain }}</div>
+        <p style="font-size:9.5pt; font-weight:300; line-height:1.55; color:#3c5544; margin:0 0 7px">{{ p.desc }}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:5px">
+          <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3">
+            <span style="font-size:8pt; color:#5c7a63; border:1px solid rgba(22,36,27,0.18); padding:1px 6px; letter-spacing:0.03em">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+
+  <div style="break-inside:avoid; border-top:1px solid rgba(22,36,27,0.2); margin-top:28px; padding-top:18px">
+    <h2 style="font-family:Lora,Georgia,serif; font-size:16pt; font-weight:400; margin:0 0 8px; color:#16241b">Working on something <em style="font-style:italic; color:#8a6a12">that matters?</em></h2>
+    <p style="font-size:10pt; font-weight:300; line-height:1.6; color:#3c5544; margin:0 0 10px; max-width:34em">I'm open to roles, consulting, and collaborations in global health, social justice, and social enterprise — especially where technical depth and product thinking are both needed.</p>
+    <p style="font-size:10pt; color:#16241b; margin:0">omeedkashef@gmail.com &nbsp;·&nbsp; LinkedIn &nbsp;·&nbsp; GitHub</p>
+  </div>
+</doc-page>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      expertise: [
+        { area: "Industrial & Systems Engineering", detail: "Requirements, architecture, safety-critical design" },
+        { area: "Product Management", detail: "Roadmap, stakeholder alignment, regulatory environments" },
+        { area: "UX & Human Factors", detail: "Research, interaction design, usability in complex systems" },
+        { area: "Full-Stack Development", detail: "React, Node.js, Python, PostgreSQL, cloud infrastructure" }
+      ],
+      domains: [
+        { name: "Autonomous Vehicles", note: "HMI, perception UX, fleet ops" },
+        { name: "Medical Device", note: "FDA-regulated, clinical workflows" },
+        { name: "Defense", note: "Mission systems, ITAR, real-time ops" },
+        { name: "Global Health", note: "Low-resource settings, field tools" },
+        { name: "Social Justice", note: "Civic tech, legal aid, community co-design" },
+        { name: "Social Entrepreneurship", note: "Impact ventures, B2B SaaS, NGO partnerships" }
+      ],
+      projects: [
+        { title: "AV Perception HMI", domain: "Autonomous Vehicles", tags: ["UX", "Systems", "Safety-Critical"], year: "2023", desc: "Operator interface for a Level 4 AV fleet — translating real-time sensor fusion and edge-case decisions into actionable displays for remote supervisors.", img: "https://images.unsplash.com/photo-1768561327873-206fe9c43b93?w=900&h=700&fit=crop&auto=format", alt: "Laptop screen reflecting sunlight through trees" },
+        { title: "Surgical Planning Workflow", domain: "Medical Device", tags: ["Product Management", "UX", "FDA 510(k)"], year: "2022", desc: "End-to-end product ownership of a pre-operative planning tool — requirements, regulatory documentation, and clinical validation across orthopedic surgery suites.", img: "https://images.unsplash.com/photo-1649494768936-8f007a095325?w=900&h=700&fit=crop&auto=format", alt: "Circuit board with glowing amber lights" },
+        { title: "Field Health Data Platform", domain: "Global Health", tags: ["Full-Stack", "Product", "Low-Bandwidth"], year: "2024", desc: "Open-source platform for community health workers to collect and sync patient data offline — React Native, Node.js, PostgreSQL.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=700&fit=crop&auto=format", alt: "Analytics dashboard on a laptop screen" },
+        { title: "Mission Systems Dashboard", domain: "Defense", tags: ["Systems Engineering", "UX", "Real-Time"], year: "2021", desc: "Operator console for mission-critical ground systems — information architecture and interaction design for high-cognitive-load environments under ITAR constraints.", img: "https://images.unsplash.com/photo-1764416756674-7fde5ac4effe?w=900&h=700&fit=crop&auto=format", alt: "Aerial view of a vast forest at sunset" },
+        { title: "Justice Access Navigator", domain: "Social Justice", tags: ["Social Entrepreneurship", "Full-Stack", "Civic Tech"], year: "2024", desc: "Web app connecting low-income residents to legal aid, housing, and social services — co-designed with community organizers across three U.S. cities.", img: "https://images.unsplash.com/photo-1770773885958-19f06d6eb0d7?w=900&h=700&fit=crop&auto=format", alt: "Dense urban greenery interspersed with modern buildings" },
+        { title: "Supply Chain Transparency", domain: "Social Enterprise", tags: ["Product Management", "API", "Impact"], year: "2023", desc: "B2B SaaS tool helping SMEs audit and publish supplier labor standards — from requirements through MVP, partnered with a fair-trade certification body.", img: "https://images.unsplash.com/photo-1770810416523-bf40d844a248?w=900&h=700&fit=crop&auto=format", alt: "Modern building with large solar panels" }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
