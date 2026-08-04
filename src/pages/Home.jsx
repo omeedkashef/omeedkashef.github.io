@@ -4,16 +4,20 @@ import {
   ServerIcon,
   ApiIcon,
   ChartIcon,
+  ArchitectureIcon,
   LeadershipIcon,
   CommunicationIcon,
   StakeholderIcon,
   EmpathyIcon,
+  FacilitationIcon,
+  StrategyIcon,
 } from '../components/Icons.jsx'
 import heroImage from '../assets/hero.jpg'
 import collaborationImage from '../assets/home-collaboration.jpg'
+import highStakesSystemsImage from '../assets/high-stakes-systems.jpg'
 
-// Both images on this page were generated with DALL-E via ChatGPT. See the
-// "AI-generated assets and tool attribution" table in ai/ai-spec.md.
+// Images on this page were generated with OpenAI image tools. See the asset
+// table in ai/ai-spec.md for full attribution.
 
 // Skills come from the resolved content decisions in ai/ai-spec.md. The tech
 // lists there are expanded into sentences here; no capability is claimed that
@@ -44,6 +48,11 @@ const TECHNICAL_SKILLS = [
     title: 'Data Analysis & Visualization',
     text: 'R and Excel for statistical analysis of study data, turning research results into decisions a team can act on.',
   },
+  {
+    Icon: ArchitectureIcon,
+    title: 'Systems Architecture & Requirements',
+    text: 'Requirements traceability, system architecture and failure mode analysis for complex, safety-critical products operating under real-world constraints.',
+  },
 ]
 
 const SOFT_SKILLS = [
@@ -67,7 +76,46 @@ const SOFT_SKILLS = [
     title: 'Design Thinking & Empathy',
     text: 'Persona development, user journey and empathy mapping, and qualitative research with more than 50 participants to ground decisions in real user needs.',
   },
+  {
+    Icon: FacilitationIcon,
+    title: 'Agile Team Facilitation',
+    text: 'Guided cross-functional teams through backlogs, sprints and shared priorities, creating the structure needed to move complex work forward together.',
+  },
+  {
+    Icon: StrategyIcon,
+    title: 'Strategic Planning & Prioritization',
+    text: 'Connected OKRs, competitive analysis and product strategy to practical roadmaps, helping teams focus effort where it creates the most value.',
+  },
 ]
+
+const EXPERTISE = [
+  ['Industrial & Systems Engineering', 'Requirements, architecture, safety-critical design'],
+  ['Product Management', 'Roadmap, stakeholder alignment, regulatory environments'],
+  ['UX & Human Factors', 'Research, interaction design, usability in complex systems'],
+  ['Full-Stack Development', 'React, Node.js, Python, PostgreSQL, cloud infrastructure'],
+]
+
+const DOMAIN_EXPERIENCE = [
+  ['Autonomous Vehicles', 'HMI, perception UX, fleet ops'],
+  ['Medical Device', 'FDA-regulated, clinical workflows'],
+  ['Defense', 'Mission systems, ITAR, real-time ops'],
+  ['Global Health', 'Low-resource settings, field tools'],
+  ['Social Justice', 'Civic tech, legal aid, community co-design'],
+  ['Social Entrepreneurship', 'Impact ventures, B2B SaaS, NGO partnerships'],
+]
+
+function ExperienceList({ items, className = '' }) {
+  return (
+    <dl className={`experience-list ${className}`}>
+      {items.map(([title, detail]) => (
+        <div className="experience-list__row" key={title}>
+          <dt>{title}</dt>
+          <dd>{detail}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
 
 function SkillCard({ Icon, title, text }) {
   return (
@@ -97,15 +145,65 @@ function Home() {
         <div className="home-intro__content container">
           <p className="eyebrow">Systems · Product · UX · Engineering</p>
           <h1 id="intro-heading" className="home-intro__name">
-            Omeed Kashef
+            Complex systems,
+            <br />
+            <em>built for people.</em>
           </h1>
-          <p className="home-intro__role">Forward Deployed Engineer &amp; Product Leader</p>
           <p className="home-intro__lead">
-            Systems engineer and product leader with deep experience in autonomous vehicles,
-            medical devices and defense, with a new focus on global health, social justice and
-            sustainable technology. I work where the margin for error is small — and I build the
-            software, the requirements and the shared understanding that keeps it that way.
+            Forward deployed systems engineer and product leader with deep experience in
+            autonomous vehicles, medical devices, and defense with a new focus on global health,
+            social justice, and sustainable technology.
           </p>
+        </div>
+      </section>
+
+      {/* Section 2 — Background and domain experience */}
+      <section className="home-background" aria-labelledby="background-heading">
+        <div className="home-background__grid container">
+          <div className="home-background__story">
+            <h2 id="background-heading">
+              High-stakes scenarios,
+              <br />
+              <em>designed with control.</em>
+            </h2>
+
+            <div className="home-background__copy">
+              <p>
+                My background sits at the intersection of systems engineering, UX, software
+                development, and product management. I’ve spent years in domains where the margin
+                for error is effectively zero — autonomous vehicles, FDA-regulated medical
+                devices, and defense systems.
+              </p>
+              <p>
+                That experience shaped how I think about complexity: requirements traceability,
+                failure mode analysis, human factors in high-cognitive-load environments. I’m now
+                applying that rigor to problems that matter most to me — global health equity,
+                social justice, and ventures built around social value.
+              </p>
+              <p>
+                I believe technology and the natural world don’t have to be in conflict. The most
+                durable systems are the ones that work with nature’s logic, not against it.
+              </p>
+            </div>
+
+            <div className="home-background__expertise">
+              <p className="label">Expertise</p>
+              <ExperienceList items={EXPERTISE} className="experience-list--stacked" />
+            </div>
+          </div>
+
+          <div className="home-background__domains">
+            <figure className="home-background__image">
+              <img
+                src={highStakesSystemsImage}
+                alt="A systems engineer monitoring autonomous vehicle validation from a controlled operations room"
+              />
+            </figure>
+            <div>
+              <p className="label">Domain experience</p>
+              <ExperienceList items={DOMAIN_EXPERIENCE} />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -113,14 +211,14 @@ function Home() {
         <hr className="rule" />
       </div>
 
-      {/* Section 2 — Technical skills */}
+      {/* Section 3 — Technical skills */}
       <section className="section container" aria-labelledby="technical-heading">
         <div className="home-section__head">
-          <p className="label">Technical practice</p>
+          <p className="label">Technical expertise</p>
           <h2 id="technical-heading">
-            Build with rigor.
+            From architecture
             <br />
-            <em>Design for reality.</em>
+            <em>to implementation.</em>
           </h2>
         </div>
         <div className="card-grid">
@@ -138,14 +236,14 @@ function Home() {
         />
       </div>
 
-      {/* Section 3 — Soft skills */}
+      {/* Section 4 — Soft skills */}
       <section className="section container" aria-labelledby="soft-heading">
         <div className="home-section__head">
-          <p className="label">How I work</p>
+          <p className="label">Collaborative practice</p>
           <h2 id="soft-heading">
-            Human stakes,
+            Building alignment,
             <br />
-            <em>operational clarity.</em>
+            <em>leading with empathy.</em>
           </h2>
         </div>
         <div className="card-grid">

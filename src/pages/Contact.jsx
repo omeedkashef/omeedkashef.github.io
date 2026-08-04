@@ -82,18 +82,17 @@ function Contact() {
           <div>
             <p className="eyebrow">Contact</p>
             <h1 id="contact-heading">
-              Working on something
+              Have a complex challenge?
               <br />
-              <em>that matters?</em>
+              <em>Let’s solve it together.</em>
             </h1>
             <p className="lead contact-intro">
-              I&apos;m open to roles, consulting, and collaborations in global health, social
-              justice, and social enterprise — especially where technical depth and product
-              thinking are both needed.
+              I&apos;m open to local, national, and international collaborations in global health, social
+              justice, and social enterprise, and complex systems in general where technical depth meets human centered design.
             </p>
             <div className="contact-details">
               <a href="mailto:omeedkashef@gmail.com">omeedkashef@gmail.com</a>
-              <p className="meta">Tampa Bay, Florida · open to remote and global opportunities</p>
+              <p className="meta">Tampa Bay, Florida</p>
             </div>
           </div>
 

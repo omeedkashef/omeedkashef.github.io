@@ -116,6 +116,17 @@ export function ChartIcon() {
   )
 }
 
+export function ArchitectureIcon() {
+  return (
+    <svg {...skill}>
+      <rect x="9" y="3.5" width="6" height="4" />
+      <rect x="3.5" y="16.5" width="6" height="4" />
+      <rect x="14.5" y="16.5" width="6" height="4" />
+      <path d="M12 7.5v4.5M6.5 12h11M6.5 12v4.5M17.5 12v4.5" />
+    </svg>
+  )
+}
+
 export function LeadershipIcon() {
   return (
     <svg {...skill}>
@@ -142,6 +153,28 @@ export function StakeholderIcon() {
       <circle cx="12" cy="12" r="8.5" />
       <circle cx="12" cy="12" r="4.5" />
       <circle cx="12" cy="12" r="1" />
+    </svg>
+  )
+}
+
+export function FacilitationIcon() {
+  return (
+    <svg {...skill}>
+      <circle cx="6" cy="7" r="2.5" />
+      <circle cx="18" cy="7" r="2.5" />
+      <circle cx="12" cy="17" r="2.5" />
+      <path d="m8 8.5 2.5 5.8" />
+      <path d="m16 8.5-2.5 5.8" />
+      <path d="M8.5 7h7" />
+    </svg>
+  )
+}
+
+export function StrategyIcon() {
+  return (
+    <svg {...skill}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z" />
     </svg>
   )
 }

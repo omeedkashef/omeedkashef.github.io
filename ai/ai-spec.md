@@ -208,6 +208,7 @@ The grading sheet requires that the AI tool used for generated imagery be docume
 | `logo.png` | **AI-generated — DALL·E (ChatGPT)**. Stylised leaf enclosed in a circle. | Yes — satisfies "Personal Logo (AI)" |
 | `hero.jpg` | **AI-generated — DALL·E (ChatGPT)**. A sustainable city where green towers, solar panels, clean water, and community life coexist with nature. | Yes — Home |
 | `home-collaboration.jpg` | **AI-generated — DALL·E (ChatGPT)**. A sunlit workspace open to a forest canopy, people collaborating around a screen of system diagrams. | Yes — Home |
+| `high-stakes-systems.jpg` | **AI-generated — OpenAI image generation.** A systems engineer monitoring autonomous-vehicle validation from a controlled operations room. | Yes — Home |
 | `portfolio-education.jpg` | **AI-generated — DALL·E (ChatGPT)**. An open study space with engineering texts and models, overlooking trees. | Yes — Portfolio |
 | `portfolio-projects.jpg` | **AI-generated — DALL·E (ChatGPT)**. A workbench where circuit boards and prototypes sit among growing plants. | Yes — Portfolio |
 | `link-linkedin.jpg`, `link-github.jpg`, `link-coursera.jpg`, `link-figma.jpg` | **AI-generated — DALL·E (ChatGPT)**. Card thumbnails for the Links page, one per destination. | Yes — Links |
