@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { navItems } from './navItems.js'
+import ThemeToggle from './ThemeToggle.jsx'
 import logo from '../assets/logo.png'
 
 // Fixed top bar, present on every route including the hidden ones.
@@ -20,20 +21,26 @@ function Header() {
           <span className="site-header__name">Omeed Kashef</span>
         </Link>
 
-        <nav className="site-nav" aria-label="Main navigation">
-          {navItems.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === '/'}
-              className={({ isActive }) =>
-                isActive ? 'site-nav__link site-nav__link--active' : 'site-nav__link'
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
+        {/* The toggle is a sibling of .site-nav, not a child: .site-nav is
+            display:none below 768px, and a nested toggle would vanish there. */}
+        <div className="site-header__actions">
+          <nav className="site-nav" aria-label="Main navigation">
+            {navItems.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) =>
+                  isActive ? 'site-nav__link site-nav__link--active' : 'site-nav__link'
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )
