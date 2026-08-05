@@ -87,8 +87,9 @@ function Contact() {
               <em>Let’s solve it together.</em>
             </h1>
             <p className="lead contact-intro">
-              I&apos;m open to local, national, and international collaborations in global health, social
-              justice, and social enterprise, and complex systems in general where technical depth meets human centered design.
+              I&apos;m open to local, national, and international collaborations in global health,
+              social justice, social enterprise, and other complex systems where technical depth
+              meets human-centered design.
             </p>
             <div className="contact-details">
               <a href="mailto:omeedkashef@gmail.com">omeedkashef@gmail.com</a>

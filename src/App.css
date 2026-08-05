@@ -20,6 +20,10 @@
   padding-top: var(--header-h);
 }
 
+.app-main:focus {
+  outline: none;
+}
+
 /* --- Home: introduction -------------------------------------------------- */
 
 /* Full-bleed image with the text sitting over its lower half, matching the
@@ -73,8 +77,11 @@
 .home-intro__lead {
   max-width: 52rem;
   margin-top: var(--gap-md);
-  font-size: clamp(1rem, 1.55vw, 1.4rem);
-  font-weight: 300;
+  /* Floor matches --step-lead: below it, a narrow desktop viewport rendered the
+     hero lead smaller than an ordinary lead paragraph — and smaller than the
+     same element at the mobile breakpoint, which resolves to --step-lead. */
+  font-size: clamp(1.125rem, 1.55vw, 1.4rem);
+  font-weight: 400;
   line-height: 1.7;
   color: var(--fg);
 }
@@ -244,7 +251,7 @@
 
 .skill-card__text {
   font-size: var(--step-sm);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-body);
   color: var(--fg-muted);
 }
@@ -327,10 +334,12 @@
 .entry__text {
   margin-top: var(--gap-sm);
   font-size: var(--step-sm);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-body);
   color: var(--fg-muted);
-  max-width: 46rem;
+  /* 46rem put these at ~98 characters per line, well past the 45-75 range that
+     reads comfortably — these are the densest paragraphs on the site. */
+  max-width: 36rem;
 }
 
 @media (max-width: 768px) {
@@ -399,7 +408,7 @@
 .project-card__text {
   margin-top: var(--gap-xs);
   font-size: var(--step-sm);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-body);
   color: var(--fg-muted);
 }
@@ -428,6 +437,7 @@
   background: var(--surface);
   height: 100%;
   color: inherit;
+  text-decoration: none;
   transition:
     border-color var(--t-fast),
     transform var(--t-fast);
@@ -471,7 +481,7 @@
 
 .link-card__text {
   font-size: var(--step-sm);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-body);
   color: var(--fg-muted);
 }
@@ -511,6 +521,10 @@
   border-top: 1px solid var(--border);
 }
 
+.contact-details a {
+  overflow-wrap: anywhere;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -521,7 +535,8 @@
   font-size: var(--step-xs);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--fg-muted);
+  color: var(--fg);
+  font-weight: 500;
 }
 
 .contact-submit {
@@ -535,13 +550,26 @@
 
 .form-status {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--gap-sm);
   font-size: var(--step-sm);
+  padding: 12px;
+  border-radius: 4px;
+  background: var(--surface);
+  border-left: 4px solid var(--primary);
 }
 
 .form-status svg {
   flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.form-status--error {
+  border-left-color: var(--danger);
+}
+
+.form-status--success {
+  border-left-color: var(--primary);
 }
 
 @media (max-width: 768px) {
@@ -575,7 +603,8 @@
   font-size: var(--step-xs);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--fg-muted);
+  color: var(--fg);
+  font-weight: 500;
 }
 
 .login__submit {
@@ -682,11 +711,20 @@
   color: var(--primary);
   display: inline-flex;
   align-items: center;
-  padding: 4px;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  transition: color var(--t-fast);
 }
 
 .table-action:hover {
   color: var(--accent);
+}
+
+.table-action:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .table-action--danger {
@@ -756,17 +794,27 @@
   cursor: pointer;
   color: var(--fg-muted);
   display: inline-flex;
-  padding: 4px;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  transition: color var(--t-fast);
 }
 
 .modal__close:hover {
   color: var(--fg);
 }
 
+.modal__close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 .modal__body {
   margin-top: var(--gap-md);
   font-size: var(--step-sm);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-body);
   color: var(--fg-muted);
   white-space: pre-wrap;
@@ -803,21 +851,34 @@
   min-width: 0; /* lets the name truncate instead of pushing the nav off-screen */
 }
 
-.site-header__brand:hover {
-  color: var(--primary);
+.site-header__logo-link {
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header__logo-link:hover,
+.site-header__logo-link:visited {
+  color: var(--fg);
 }
 
 .site-header__logo {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   object-fit: contain;
+  /* The source artwork has very fine lines. A tight shadow strengthens its
+     edges at header size without turning the mark into an oversized block. */
+  filter: contrast(1.15) saturate(1.08) drop-shadow(0 0 0.45px rgba(79, 168, 116, 0.8));
 }
 
 .site-header__name {
   font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -829,7 +890,7 @@
 .site-header__actions {
   display: flex;
   align-items: center;
-  gap: var(--gap-lg);
+  gap: clamp(var(--gap-sm), 3vw, var(--gap-lg));
   min-width: 0;
 }
 
@@ -839,8 +900,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* 40px: comfortably past the 24px minimum target size, without making the
-     56px header feel crowded. */
+  min-width: 44px;
+  min-height: 44px;
   width: 40px;
   height: 40px;
   flex-shrink: 0;
@@ -860,15 +921,23 @@
   border-color: var(--border);
 }
 
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 /* --- Desktop navigation (>768px) ----------------------------------------- */
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: var(--gap-lg);
+  gap: clamp(var(--gap-sm), 3vw, var(--gap-lg));
 }
 
 .site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: var(--step-xs);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -876,6 +945,7 @@
   white-space: nowrap;
   padding-block: 4px;
   border-bottom: 1px solid transparent;
+  text-decoration: none;
 }
 
 .site-nav__link:hover {
@@ -891,6 +961,15 @@
 @media (max-width: 768px) {
   .site-nav {
     display: none;
+  }
+
+  .site-header__logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-header__name {
+    font-size: 1.05rem;
   }
 }
 
@@ -926,14 +1005,17 @@
     gap: 3px;
     color: var(--fg-muted);
     min-width: 0;
+    min-height: 44px;
+    text-decoration: none;
   }
 
   .mobile-nav__link--active {
     color: var(--primary);
+    box-shadow: inset 0 3px 0 currentColor;
   }
 
   .mobile-nav__label {
-    font-size: 0.625rem;
+    font-size: var(--step-xs);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1;
@@ -957,7 +1039,9 @@
 
 .site-footer__name {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  /* Was 1rem, which is now exactly --step-body — a wordmark reading at the same
+     size as body copy. */
+  font-size: 1.125rem;
   color: var(--fg);
 }
 
@@ -1016,10 +1100,20 @@
   }
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 18px;
+  }
+
+  .section {
+    padding-block: var(--gap-lg);
+  }
+}
+
 /* Two-column split that collapses on narrow screens without a media query. */
 .split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: var(--gap-xl);
   align-items: start;
 }
@@ -1028,8 +1122,14 @@
    breakpoints and no overflow. */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: var(--gap-lg);
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    gap: var(--gap-md);
+  }
 }
 
 .rule {
@@ -1056,7 +1156,7 @@
 
 .lead {
   font-size: var(--step-lead);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--fg-muted);
   line-height: var(--lh-body);
 }
@@ -1066,7 +1166,7 @@
   flex-direction: column;
   gap: var(--gap-md);
   font-size: var(--step-body);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-loose);
   color: var(--fg-muted);
 }
@@ -1106,21 +1206,30 @@
   display: inline-flex;
   align-items: center;
   gap: var(--gap-sm);
-  padding: 0.65rem 1.5rem;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
   border: 0;
   font-size: var(--step-body);
   letter-spacing: 0.05em;
   color: var(--bg);
   background: var(--primary);
   cursor: pointer;
-  transition: opacity var(--t-fast);
+  transition:
+    opacity var(--t-fast),
+    background-color var(--t-fast);
 }
 
 .btn:hover {
   opacity: 0.85;
 }
 
+.btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 .btn--ghost {
+  min-height: 44px;
   padding: 0;
   color: var(--primary);
   background: transparent;
@@ -1138,8 +1247,6 @@
 
 /* --- Forms --------------------------------------------------------------- */
 
-/* The prototype's signature field treatment: no box, just a hairline that
-   lights up green on focus. */
 .field {
   display: flex;
   flex-direction: column;
@@ -1148,36 +1255,56 @@
 
 .field input,
 .field textarea {
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  border: 1px solid var(--border-input);
   color: var(--fg);
-  padding-bottom: 8px;
+  padding: 12px 14px;
   font-size: var(--step-body);
-  font-weight: 300;
+  font-weight: 400;
   outline: none;
-  transition: border-color var(--t-fast);
+  transition:
+    background-color var(--t-fast),
+    border-color var(--t-fast),
+    box-shadow var(--t-fast);
 }
 
 .field textarea {
   resize: vertical;
   min-height: 6rem;
+  font-family: inherit;
+}
+
+.field input:hover,
+.field textarea:hover {
+  border-color: var(--primary);
+  background: var(--surface);
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-bottom-color: var(--primary);
+  border-color: var(--primary);
+  background: var(--bg);
+  box-shadow: 0 0 0 3px var(--selection);
 }
 
 /* Validation states — the contact form needs visibly distinct feedback. */
 .field--invalid input,
 .field--invalid textarea {
-  border-bottom-color: var(--danger);
+  border-color: var(--danger);
+  background: var(--surface);
+}
+
+.field--invalid input:focus,
+.field--invalid textarea:focus {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px var(--danger-wash);
 }
 
 .field-error {
   font-size: var(--step-xs);
   color: var(--danger);
+  font-weight: 500;
+  margin-top: 4px;
 }
 
 .form-status--success {
@@ -1224,4 +1351,25 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Skip to main content link — visible on focus for keyboard users. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--primary);
+  color: var(--bg);
+  border: 0;
+  font: inherit;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+  cursor: pointer;
+  transform: translateY(-100%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
