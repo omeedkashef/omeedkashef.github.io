@@ -25,7 +25,7 @@ const LINKS = [
   {
     title: 'Coursera Profile',
     url: 'https://www.coursera.org/learner/omeedkashef',
-    text: 'Verified certifications, including the Google UX Design Professional Certificate. Documents the formal design training that sits behind the human-factors side of my work.',
+    text: 'Verified certifications, including the Google UX Design Professional Certificate. Documents the formal design training behind the human-factors side of my work.',
     img: courseraImage,
     alt: 'An open book whose pages dissolve into points of light rising through a forest clearing',
   },

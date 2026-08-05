@@ -19,11 +19,16 @@
   --fg-muted: #7a9e82;       /* sage — secondary text                        */
   --primary: #4fa874;        /* green — links, focus, primary actions        */
   --accent: #c89a2e;         /* gold — emphasis, hover, category labels      */
-  --danger: #d9534f;         /* form errors, destructive actions             */
+  --danger: #e06b67;         /* form errors, destructive actions             */
   --danger-hover: #ff6b66;
+  --danger-wash: rgba(224, 107, 103, 0.25);  /* focus halo on invalid fields */
 
   --border: rgba(79, 168, 116, 0.16);
-  --placeholder: rgba(122, 158, 130, 0.4);
+  /* Input outlines are UI components, not decoration: WCAG 1.4.11 wants 3:1
+     against both the field fill and the page. --border is a hairline at 0.16
+     alpha (~1.3:1) — fine for card edges, invisible as a field boundary. */
+  --border-input: #3f7d5a;
+  --placeholder: #7a9e82;
   --selection: rgba(79, 168, 116, 0.3);
   --nav-solid: rgba(11, 22, 16, 0.9);
   --overlay: rgba(11, 22, 16, 0.15);
@@ -49,13 +54,20 @@
   --font-heading: 'Lora', Georgia, serif;
   --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
 
+  /* The bottom four steps previously spanned 15.2px–13px — four names for what
+     the eye reads as one size, with --step-lead only 0.8px above body. They now
+     step at a ratio the hierarchy can actually be seen in, with body at the
+     16px browser default rather than 10% under it.
+
+     16px on --step-body is also what stops iOS Safari from auto-zooming the
+     viewport when a text input takes focus; it does that below 16px. */
   --step-hero: clamp(2.6rem, 6vw, 5.5rem);    /* h1 */
   --step-section: clamp(1.8rem, 3vw, 2.6rem); /* h2 */
-  --step-title: 1.4rem;
-  --step-lead: 0.95rem;
-  --step-body: 0.9rem;
-  --step-sm: 0.85rem;
-  --step-xs: 0.75rem;                         /* 12px — labels, meta */
+  --step-title: 1.5rem;                       /* 24px — h3, card and modal titles */
+  --step-lead: 1.125rem;                      /* 18px — intro paragraphs */
+  --step-body: 1rem;                          /* 16px — body copy, inputs, buttons */
+  --step-sm: 0.9375rem;                       /* 15px — card and project descriptions */
+  --step-xs: 0.8125rem;                       /* 13px — labels, meta, field errors */
 
   --lh-hero: 1.08;
   --lh-heading: 1.2;
@@ -127,9 +139,11 @@
     --accent: #8a6414;
     --danger: #b3312d;
     --danger-hover: #8f2320;
+    --danger-wash: rgba(179, 49, 45, 0.22);
 
     --border: rgba(47, 122, 79, 0.22);
-    --placeholder: rgba(74, 101, 82, 0.55);
+    --border-input: #517f63;
+    --placeholder: #4a6552;
     --selection: rgba(79, 168, 116, 0.28);
     --nav-solid: rgba(245, 248, 243, 0.9);
     --overlay: rgba(18, 36, 26, 0.08);
@@ -162,9 +176,11 @@
   --accent: #8a6414;
   --danger: #b3312d;
   --danger-hover: #8f2320;
+  --danger-wash: rgba(179, 49, 45, 0.22);
 
   --border: rgba(47, 122, 79, 0.22);
-  --placeholder: rgba(74, 101, 82, 0.55);
+  --border-input: #517f63;
+  --placeholder: #4a6552;
   --selection: rgba(79, 168, 116, 0.28);
   --nav-solid: rgba(245, 248, 243, 0.9);
   --overlay: rgba(18, 36, 26, 0.08);
@@ -229,7 +245,7 @@ body {
   color: var(--fg);
   font-family: var(--font-body);
   font-size: var(--step-body);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -278,12 +294,20 @@ p {
 
 a {
   color: var(--primary);
-  text-decoration: none;
-  transition: color var(--t-fast);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition:
+    color var(--t-fast),
+    text-decoration-color var(--t-fast);
 }
 
 a:hover {
   color: var(--accent);
+}
+
+a:visited {
+  color: var(--primary);
 }
 
 img {
@@ -319,5 +343,18 @@ textarea::placeholder {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* High-contrast modes may replace palette colours and erase subtle component
+   boundaries, so interactive controls retain explicit system-colour edges. */
+@media (forced-colors: active) {
+  .btn,
+  .field input,
+  .field textarea,
+  .theme-toggle,
+  .table-action,
+  .modal__close {
+    border: 1px solid ButtonText;
   }
 }

@@ -12,7 +12,7 @@ import {
   FacilitationIcon,
   StrategyIcon,
 } from '../components/Icons.jsx'
-import heroImage from '../assets/hero.jpg'
+import heroImage from '../assets/hero-clean.png'
 import collaborationImage from '../assets/home-collaboration.jpg'
 import highStakesSystemsImage from '../assets/high-stakes-systems.jpg'
 
@@ -26,17 +26,17 @@ const TECHNICAL_SKILLS = [
   {
     Icon: CodeIcon,
     title: 'JavaScript & Front-End',
-    text: 'Building interfaces with HTML, CSS, JavaScript and React — including the component structure and routing behind this site.',
+    text: 'Building interfaces with HTML, CSS, JavaScript, and React — including the component structure and routing behind this site.',
   },
   {
     Icon: StackIcon,
     title: 'MERN Stack',
-    text: 'MongoDB, Express, React and Node used together to take a defined use case from data model through to a working interface.',
+    text: 'Using MongoDB, Express, React, and Node together to take a defined use case from data model through to a working interface.',
   },
   {
     Icon: ServerIcon,
     title: 'Java Back-End',
-    text: 'Java with Spring Boot, JPA and SQL for server-side services and relational data access.',
+    text: 'Using Java with Spring Boot, JPA, and SQL for server-side services and relational data access.',
   },
   {
     Icon: ApiIcon,
@@ -51,7 +51,7 @@ const TECHNICAL_SKILLS = [
   {
     Icon: ArchitectureIcon,
     title: 'Systems Architecture & Requirements',
-    text: 'Requirements traceability, system architecture and failure mode analysis for complex, safety-critical products operating under real-world constraints.',
+    text: 'Applying requirements traceability, system architecture, and failure mode analysis to complex, safety-critical products operating under real-world constraints.',
   },
 ]
 
@@ -59,32 +59,32 @@ const SOFT_SKILLS = [
   {
     Icon: LeadershipIcon,
     title: 'Leadership & Mentorship',
-    text: 'Led a product development team of five through a Class II device 510(k) submission and an agile team of eight at Ford, and has trained and mentored designers in human factors and product development.',
+    text: 'Led a product development team of five through a Class II device 510(k) submission and an agile team of eight at Ford. Trained and mentored designers in human factors and product development.',
   },
   {
     Icon: CommunicationIcon,
     title: 'Cross-Functional Communication',
-    text: 'Streamlined communication across mechanical engineering, regulatory, human factors and business development by organising information architecture, defining roles and setting agendas.',
+    text: 'Streamlined communication across mechanical engineering, regulatory, human factors, and business development by organizing information architecture, defining roles, and setting agendas.',
   },
   {
     Icon: StakeholderIcon,
     title: 'Stakeholder & Client Management',
-    text: 'Managed OKRs, timelines, product backlogs and sprints with stakeholders from cradle to grave, and presented competitive analysis and product strategy to leadership.',
+    text: 'Managed OKRs, timelines, product backlogs, and sprints throughout the product lifecycle, and presented competitive analysis and product strategy to leadership.',
   },
   {
     Icon: EmpathyIcon,
     title: 'Design Thinking & Empathy',
-    text: 'Persona development, user journey and empathy mapping, and qualitative research with more than 50 participants to ground decisions in real user needs.',
+    text: 'Used personas, user journeys, empathy maps, and qualitative research with more than 50 participants to ground decisions in real user needs.',
   },
   {
     Icon: FacilitationIcon,
     title: 'Agile Team Facilitation',
-    text: 'Guided cross-functional teams through backlogs, sprints and shared priorities, creating the structure needed to move complex work forward together.',
+    text: 'Guided cross-functional teams through backlogs, sprints, and shared priorities, creating the structure needed to move complex work forward together.',
   },
   {
     Icon: StrategyIcon,
     title: 'Strategic Planning & Prioritization',
-    text: 'Connected OKRs, competitive analysis and product strategy to practical roadmaps, helping teams focus effort where it creates the most value.',
+    text: 'Connected OKRs, competitive analysis, and product strategy to practical roadmaps, helping teams focus their efforts where they create the most value.',
   },
 ]
 
@@ -150,8 +150,8 @@ function Home() {
             <em>built for people.</em>
           </h1>
           <p className="home-intro__lead">
-            Forward deployed systems engineer and product leader with deep experience in
-            autonomous vehicles, medical devices, and defense with a new focus on global health,
+            Forward-deployed systems engineer and product leader with deep experience in
+            autonomous vehicles, medical devices, and defense, with a new focus on global health,
             social justice, and sustainable technology.
           </p>
         </div>
@@ -176,7 +176,7 @@ function Home() {
               </p>
               <p>
                 That experience shaped how I think about complexity: requirements traceability,
-                failure mode analysis, human factors in high-cognitive-load environments. I’m now
+                failure mode analysis, and human factors in high-cognitive-load environments. I’m now
                 applying that rigor to problems that matter most to me — global health equity,
                 social justice, and ventures built around social value.
               </p>
