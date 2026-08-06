@@ -106,8 +106,13 @@ function Login() {
             onChange={update('email')}
             disabled={!isSupabaseConfigured || signingIn}
             aria-invalid={Boolean(fieldErrors.email)}
+            aria-describedby={fieldErrors.email ? 'login-email-error' : undefined}
           />
-          {fieldErrors.email && <span className="field-error">{fieldErrors.email}</span>}
+          {fieldErrors.email && (
+            <span className="field-error" id="login-email-error">
+              {fieldErrors.email}
+            </span>
+          )}
         </div>
 
         <div className={`field${fieldErrors.password ? ' field--invalid' : ''}`}>
@@ -121,8 +126,13 @@ function Login() {
             onChange={update('password')}
             disabled={!isSupabaseConfigured || signingIn}
             aria-invalid={Boolean(fieldErrors.password)}
+            aria-describedby={fieldErrors.password ? 'login-password-error' : undefined}
           />
-          {fieldErrors.password && <span className="field-error">{fieldErrors.password}</span>}
+          {fieldErrors.password && (
+            <span className="field-error" id="login-password-error">
+              {fieldErrors.password}
+            </span>
+          )}
         </div>
 
         <button

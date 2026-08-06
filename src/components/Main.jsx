@@ -18,7 +18,7 @@ function Main({ children }) {
   return (
     <>
       <Header />
-      <main className="app-main">{children}</main>
+      <main id="app-main" className="app-main" tabIndex="-1">{children}</main>
       <Footer />
       <MobileNav />
     </>
