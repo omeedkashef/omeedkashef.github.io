@@ -1220,6 +1220,7 @@
 }
 
 .btn:hover {
+  color: var(--bg);
   opacity: 0.85;
 }
 
