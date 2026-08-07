@@ -1076,6 +1076,7 @@
 .site-footer__contact {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--gap-md);
   font-size: var(--step-xs);
 }
@@ -1086,6 +1087,19 @@
 
 .site-footer__contact a:hover {
   color: var(--primary);
+}
+
+.site-footer__logo-link {
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.site-footer__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: contrast(1.15) saturate(1.08) drop-shadow(0 0 0.45px rgba(79, 168, 116, 0.8));
 }
 
 /* Stack the footer into a single readable column on narrow screens, and clear

@@ -21,7 +21,7 @@ function Header() {
           <Link to="/" className="site-header__logo-link" aria-label="Go to Home">
             <img
               src={logo}
-              alt=""
+              alt="Omeed Kashef logo"
               className="site-header__logo"
               width="40"
               height="40"

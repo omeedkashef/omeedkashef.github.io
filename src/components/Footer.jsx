@@ -1,8 +1,8 @@
-// Footer, present on every route. Carries the contact information and
+import { Link } from 'react-router-dom'
+import logo from '../assets/logo.png'
+
+// Footer, present on every route. Carries the social links and
 // copyright notice the grading sheet requires.
-//
-// Links here point outward only — no internal navigation, so Login and Back
-// Office stay out of every navigation surface.
 function Footer() {
   const year = new Date().getFullYear()
 
@@ -15,7 +15,15 @@ function Footer() {
         </div>
 
         <div className="site-footer__contact">
-          <a href="mailto:omeedkashef@gmail.com">omeedkashef@gmail.com</a>
+          <Link to="/" className="site-footer__logo-link" aria-label="Go to Home">
+            <img
+              src={logo}
+              alt="Omeed Kashef logo"
+              className="site-footer__logo"
+              width="40"
+              height="40"
+            />
+          </Link>
           <a
             href="https://www.linkedin.com/in/omeedkashef"
             target="_blank"
