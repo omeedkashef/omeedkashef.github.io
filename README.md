@@ -4,7 +4,10 @@ Live site: **https://FL11024OmeedK.github.io**
 
 LinkedIn Profile: https://www.linkedin.com/in/omeedkashef/
 
-LinkedIn Update: <!-- TODO(Omeed): replace this line with a short summary of what you changed on your LinkedIn profile for this module — e.g. updated headline, added the Codeboxx certification, rewrote the About section. -->
+LinkedIn Update: 
+- updated open to volunteer section and areas of interest
+- updated link to portfolio website
+- updated AI Native Full Stack certification end date and skills
 
 ---
 
