@@ -88,6 +88,12 @@ const SOFT_SKILLS = [
   },
 ]
 
+// The YouTube id of the introduction video — the trailing segment of the share
+// URL (youtu.be/<id>), not the whole link. Leave it empty and the section below
+// is skipped entirely, so an unset id can never ship a broken player to
+// production. Paste the id here and the section appears on the next build.
+const INTRO_VIDEO_ID = 'kCiZ8vkk4Rk'
+
 const EXPERTISE = [
   ['Industrial & Systems Engineering', 'Requirements, architecture, safety-critical design'],
   ['Product Management', 'Roadmap, stakeholder alignment, regulatory environments'],
@@ -129,6 +135,37 @@ function SkillCard({ Icon, title, text }) {
   )
 }
 
+// youtube-nocookie.com is the privacy-preserving host: it defers YouTube's
+// tracking cookies until the visitor actually presses play. loading="lazy"
+// keeps the third-party player off the critical path so it cannot slow the
+// hero above it.
+function IntroVideo() {
+  if (!INTRO_VIDEO_ID) return null
+
+  return (
+    <section className="section container" aria-labelledby="video-heading">
+      <div className="home-section__head">
+        <p className="label">Introduction</p>
+        <h2 id="video-heading">
+          A brief hello,
+          <br />
+          <em>in my own words.</em>
+        </h2>
+      </div>
+      <div className="home-video__frame">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${INTRO_VIDEO_ID}`}
+          title="Omeed Kashef — personal introduction video"
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+    </section>
+  )
+}
+
 function Home() {
   return (
     <>
@@ -157,7 +194,10 @@ function Home() {
         </div>
       </section>
 
-      {/* Section 2 — Background and domain experience */}
+      {/* Section 2 — Introduction video (renders only once an id is set) */}
+      <IntroVideo />
+
+      {/* Section 3 — Background and domain experience */}
       <section className="home-background" aria-labelledby="background-heading">
         <div className="home-background__grid container">
           <div className="home-background__story">
@@ -211,7 +251,7 @@ function Home() {
         <hr className="rule" />
       </div>
 
-      {/* Section 3 — Technical skills */}
+      {/* Section 4 — Technical skills */}
       <section className="section container" aria-labelledby="technical-heading">
         <div className="home-section__head">
           <p className="label">Technical expertise</p>
@@ -236,7 +276,7 @@ function Home() {
         />
       </div>
 
-      {/* Section 4 — Soft skills */}
+      {/* Section 5 — Soft skills */}
       <section className="section container" aria-labelledby="soft-heading">
         <div className="home-section__head">
           <p className="label">Collaborative practice</p>

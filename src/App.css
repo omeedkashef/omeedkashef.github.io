@@ -224,6 +224,28 @@
   margin-top: var(--gap-sm);
 }
 
+/* --- Home: introduction video -------------------------------------------- */
+
+.home-video__frame {
+  /* aspect-ratio reserves the full 16:9 box before the iframe loads, so the
+     content below never jumps once the player arrives. The iframe is absolutely
+     positioned because YouTube's own width/height attributes would otherwise
+     fight the ratio. */
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.home-video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* --- Home: skill cards --------------------------------------------------- */
 
 .skill-card {
