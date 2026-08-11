@@ -2,10 +2,12 @@ import { Routes, Route } from 'react-router-dom'
 import Main from './components/Main.jsx'
 import Home from './pages/Home.jsx'
 import Portfolio from './pages/Portfolio.jsx'
+import ProjectDetail from './pages/ProjectDetail.jsx'
 import Links from './pages/Links.jsx'
 import Contact from './pages/Contact.jsx'
 import Login from './pages/Login.jsx'
 import BackOffice from './pages/BackOffice.jsx'
+import ScrollManager from './components/ScrollManager.jsx'
 import './App.css'
 
 // Login and BackOffice are intentionally absent from any navigation. They are
@@ -14,9 +16,11 @@ import './App.css'
 function App() {
   return (
     <Main>
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/projects/:slug" element={<ProjectDetail />} />
         <Route path="/links" element={<Links />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />

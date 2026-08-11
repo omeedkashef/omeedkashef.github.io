@@ -46,7 +46,7 @@ Home makes the claim and Portfolio evidences it; Links is where a visitor goes t
 - **C — Title.** Every card carries a title or name.
 - **D — Description.** Every card carries a description of one to three sentences.
 - **E — Clickable URL.** Every card exposes a working URL that opens in a new tab.
-- **F — Count.** At least three links are displayed. Four ship.
+- **F — Count.** At least three links are displayed. Six ship.
 - **G — AI image.** At least one image on the page is AI-generated, relevant, and carries `alt` text. All four are.
 
 ---
@@ -91,8 +91,10 @@ No user input, no persistence, no network calls from the app itself. All content
 | --- | --- | --- |
 | LinkedIn | `https://www.linkedin.com/in/omeedkashef` | `link-linkedin.jpg` |
 | GitHub | `https://github.com/FL11024OmeedK` | `link-github.jpg` |
-| Coursera Profile | `https://www.coursera.org/learner/omeedkashef` | `link-coursera.jpg` |
-| Portfolio Design File | `https://www.figma.com/make/YBYiqbFMh7f60b3tFPcSHt/Portfolio-website-design` | `link-figma.jpg` |
+| CodeBoxx Academy | `https://academy.codeboxx.com/full-stack-development` | `link-coursera.jpg` |
+| Portfolio Source Code | `https://github.com/FL11024OmeedK/FL11024OmeedK.github.io` | `link-figma.jpg` |
+| University of Iowa ISE | `https://engineering.uiowa.edu/ise` | `portfolio-projects.jpg` |
+| Grinnell College | `https://www.grinnell.edu/` | `portfolio-education.jpg` |
 
 Descriptions are the two-sentence versions already resolved in the global spec, which sit inside the required one-to-three sentence range.
 
