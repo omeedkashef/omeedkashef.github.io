@@ -152,10 +152,10 @@ This is a real professional portfolio that employers will read. **All content mu
 
 - **Education and work history come from the real resume and LinkedIn profile.** Do not invent employers, roles, dates, or metrics.
 - **Projects come from two real sources**, described with their real tech stack and purpose:
-  1. **Professional work** drawn from the resume and professional history — "AV Perception HMI", "Surgical Planning Workflow", "Field Health Data Platform", "Mission Systems Dashboard", "Justice Access Navigator", "Supply Chain Transparency". These six were authored by the student in the design file and reflect genuine work across autonomous vehicles, medical devices, defense, global health, social justice, and social enterprise. **They belong on the site and must be carried over from the design.**
-  2. **Applications built during the Codeboxx program** (Rocket Elevators and the other module projects), if and where the student chooses to include them.
+  1. **Professional work** drawn from the student's own portfolio deck (`preliminary-docs/Portfolio/Omeed Kashef Portfolio.pdf`), corroborated by the resume and LinkedIn export — "Swarm Control", "Surgical Needle Tracking", "Packaging & Distribution", "Driver Onboarding", "Vehicle Interface". The deck states each project's challenge, process and result, and every metric on the site also appears in the resume or LinkedIn.
 
-  > ⚠️ An earlier revision of this spec labelled the six projects above as "design filler" and instructed that they never be carried over. **That was incorrect and is superseded by this section.** They are the student's real work.
+  > ⚠️ Two earlier revisions of this spec were wrong about the project list. The first labelled the design file's projects as "filler" to be dropped; the second reversed that and named "AV Perception HMI", "Surgical Planning Workflow", "Field Health Data Platform", "Mission Systems Dashboard", "Justice Access Navigator" and "Supply Chain Transparency" as the student's real work that must be carried over. **The second claim was also incorrect** — none of those six titles appear in the resume, the LinkedIn export, or the portfolio deck, and their descriptions state work the student did not do. Both are superseded by the list above, which is sourced.
+  > Two real projects from the deck are **held back** for space, not because they are unsourced: "Apheresis Usability" (HTA and uFMEA for a Class II blood-processing device — already covered by the Haemonetics work entry) and "Figma Prototyping" (heuristic evaluation and user testing; 8 pain points found, 3 tasks eliminated, task success +30%, SUS +22%). Either may be swapped in.
 - **Never carry over the design's Unsplash image URLs.** All images are locally hosted, and the required ones are AI-generated with the tool documented.
 
 ### Resolved content decisions
@@ -190,8 +190,10 @@ Each needs an icon and supporting text. Every one below is evidenced by a real l
 | --- | --- | --- |
 | LinkedIn | `https://www.linkedin.com/in/omeedkashef` | Professional profile covering a decade of product, UX, and systems engineering work across autonomous vehicles, medical devices, and defense. The best place to see the full career history and to get in touch about roles. |
 | GitHub | `https://github.com/FL11024OmeedK` | Source code for every project built during the Codeboxx AI Native Full Stack Developer program, including this portfolio. Shows commit history, branching workflow, and how the applications are actually put together. |
-| Coursera Profile | `https://www.coursera.org/learner/omeedkashef` | Verified certifications, including the Google UX Design Professional Certificate. Documents the formal design training that sits behind the human-factors side of my work. |
-| Portfolio Design File | `https://www.figma.com/make/YBYiqbFMh7f60b3tFPcSHt/Portfolio-website-design` | The Figma design file this site was prototyped from. Included to show the process — design system, tokens, and layout decisions — before any code was written. |
+| CodeBoxx Academy | `https://academy.codeboxx.com/full-stack-development` | An overview of the AI Native Full Stack Development program behind the software projects featured in this portfolio. |
+| Portfolio Source Code | `https://github.com/FL11024OmeedK/FL11024OmeedK.github.io` | The public repository for this website, including its React components, styling, accessibility work, and deployment configuration. |
+| University of Iowa ISE | `https://engineering.uiowa.edu/ise` | The Industrial and Systems Engineering department where Omeed completed his master's degree. |
+| Grinnell College | `https://www.grinnell.edu/` | The liberal arts college where Omeed earned his bachelor's degree in biochemistry. |
 
 ### Design source
 
@@ -214,7 +216,7 @@ The grading sheet requires that the AI tool used for generated imagery be docume
 | `link-linkedin.jpg`, `link-github.jpg`, `link-coursera.jpg`, `link-figma.jpg` | **AI-generated — DALL·E (ChatGPT)**. Card thumbnails for the Links page, one per destination. | Yes — Links |
 | `tech-in-nature.jpg`, `circuit-amber.jpg`, `analytics-dashboard.jpg`, `forest-sunset.jpg`, `urban-greenery.jpg`, `solar-architecture.jpg`, `forest-canopy.jpg` | **Stock photography.** Carried over from the Claude Design prototype, which sourced them from Unsplash. Downloaded and hosted locally so no remote URL remains, but **not AI-generated.** | **No** |
 
-> ✅ **Shortfall closed.** The grading sheet requires at least 2 AI-generated images on Home, at least 2 on Portfolio, and at least 1 on Links. Nine AI-generated images now exist, covering all three pages with margin. The seven stock photographs above are used only as project thumbnails on the Portfolio page and **must not be presented as AI-generated** — the Portfolio requirement is met by `portfolio-education.jpg` and `portfolio-projects.jpg`.
+> ✅ **Shortfall closed.** The grading sheet requires at least 2 AI-generated images on Home, at least 2 on Portfolio, and at least 1 on Links. Project cards use six distinct AI-generated visuals. Each project detail page uses exactly three visual elements: its project-specific artwork as the header background plus two compact, captioned, text-free evidence visuals. Wording extracted from the original portfolio slides is integrated into the case-study text.
 
 Alt text for every image describes the image content and is written per-page by the feature that places it.
 

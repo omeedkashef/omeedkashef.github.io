@@ -26,7 +26,8 @@ Home makes the claim; Portfolio is the evidence. The education and work sections
 
 - Education section
 - Work experience section with dates, ordered most recent first
-- Projects section — the six projects resolved in the global spec
+- Projects section — the six professional projects resolved in the global spec
+- Clickable project cards and a dedicated case-study page for each project
 - A downloadable PDF of the resume
 - Two AI-generated images acting as section headers
 - Section separation consistent with the Home page
@@ -36,7 +37,6 @@ Home makes the claim; Portfolio is the evidence. The education and work sections
 - Header, footer, navigation — inherited from the Project Layout feature.
 - Skills — those live on Home.
 - The links list, contact form, and anything Supabase-backed.
-- Case-study detail pages. Each project is a card, not a route.
 
 ---
 
@@ -70,9 +70,10 @@ Job titles and organisation names in the work section are carried as previously 
 4. An AI-generated image separates education from work.
 5. The work section lists roles most recent first — title, organisation, dates, and what was done there.
 6. A second AI-generated image separates work from projects.
-7. The projects section presents six cards, each with an image, name, tech tags, and a description.
-8. Activating the resume control downloads the file rather than navigating away.
-9. The footer closes the page.
+7. The projects section presents six clickable cards, each with an image, name, tech tags, and a description.
+8. Activating a card opens its case-study route with the challenge, approach, and outcome.
+9. Activating the resume control downloads the file rather than navigating away.
+10. The footer closes the page.
 
 No interactive state. Nothing is fetched, submitted, or persisted.
 
@@ -85,11 +86,14 @@ No interactive state. Nothing is fetched, submitted, or persisted.
 | File | Role |
 | --- | --- |
 | `src/pages/Portfolio.jsx` | The page — replaces the placeholder |
+| `src/pages/ProjectDetail.jsx` | Shared case-study view for the six project routes |
 | `src/App.css` | Portfolio-specific rules built on existing primitives |
 | `public/Omeed_Kashef_Resume.pdf` | The downloadable resume, served as a static asset |
 | `src/assets/portfolio-education.jpg` | AI-generated section image |
 | `src/assets/portfolio-projects.jpg` | AI-generated section image |
-| `src/assets/*.jpg` (six) | Project thumbnails |
+| `src/assets/card-*.jpg` (six) | Project-specific AI-generated card artwork |
+| `src/assets/{onboarding,medical,vehicle}-*.jpg` | Cropped source visuals from `portfolio with notes.pdf` |
+| `src/assets/{swarm,packaging}-*.jpg` | Project-specific AI-generated supporting visuals |
 
 The resume lives in `public/` rather than `src/assets/` deliberately: it must keep a stable, human-readable filename for the download, and Vite fingerprints anything imported from `src/`.
 
@@ -128,16 +132,20 @@ The San Diego employer is "Defense Contractor" — the resume's own wording, and
 
 ### Projects — the six resolved in the global spec, no dates
 
-| Project | Domain | Image |
-| --- | --- | --- |
-| Field Health Data Platform | Global Health | `analytics-dashboard.jpg` |
-| Justice Access Navigator | Social Justice | `urban-greenery.jpg` |
-| AV Perception HMI | Autonomous Vehicles | `tech-in-nature.jpg` |
-| Supply Chain Transparency | Social Enterprise | `solar-architecture.jpg` |
-| Surgical Planning Workflow | Medical Device | `circuit-amber.jpg` |
-| Mission Systems Dashboard | Defense | `forest-sunset.jpg` |
+Ordered most recent first, matching the other two sections, though no dates render.
 
-Project images are stock photography, not AI-generated — the page's AI-image requirement is met by `portfolio-education.jpg` and `portfolio-projects.jpg`. See the attribution table in the global spec.
+| Project | Domain | Source | Image |
+| --- | --- | --- | --- |
+| Swarm Control | Defense | Portfolio deck; resume (Defense Contractor) | `card-swarm.jpg` |
+| Surgical Needle Tracking | Medical Device | Portfolio deck; resume (Defense Contractor) | `card-surgical.jpg` |
+| Packaging & Distribution | Robotics | Portfolio deck; resume (Goddard) | `card-packaging.jpg` |
+| Driver Onboarding | Automotive | Portfolio deck; resume (Ford) | `card-onboarding.jpg` |
+| Vehicle Interface | Autonomous Vehicles | Portfolio deck; resume (DSRI) | `card-vehicle.jpg` |
+| Apheresis Device Safety | Medical Device | Annotated portfolio deck; resume (Haemonetics) | `card-apheresis.jpg` |
+
+Descriptions follow the deck's challenge / process / result structure. The San Diego employer is not named in any project description, per the global spec — the two projects from that role name no organisation at all.
+
+Each card uses distinct, project-specific AI artwork, which becomes the case-study header background. Every case-study page has exactly three visual elements: that background plus two compact, text-free evidence visuals. Text extracted from the original portfolio slides is integrated into the challenge, approach, outcome, and evidence copy rather than repeated inside the images.
 
 ### Validations
 
