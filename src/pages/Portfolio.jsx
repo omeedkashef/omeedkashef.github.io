@@ -143,7 +143,7 @@ export const PROJECTS = [
       {
         src: surgicalProcessImage,
         alt: 'Operating-room research, counting records, needle trays, and the surgical tracking device concept',
-        caption: 'Process, challenges, and results',
+        caption: 'Materials and methods',
       },
     ],
     challenge: 'A surgical tracking system needed to reduce the risk of retained items while satisfying the usability-engineering evidence expected for a Class II medical device.',
