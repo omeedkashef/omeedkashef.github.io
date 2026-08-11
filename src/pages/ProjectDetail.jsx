@@ -36,6 +36,23 @@ function ProjectDetail() {
 
   const previousProject = PROJECTS[(projectIndex - 1 + PROJECTS.length) % PROJECTS.length]
   const nextProject = PROJECTS[(projectIndex + 1) % PROJECTS.length]
+  const caseStudySections = [
+    {
+      label: 'The challenge',
+      title: project.evidence[0].title,
+      text: project.evidence[0].text,
+    },
+    {
+      label: 'The approach',
+      title: project.evidence[1].title,
+      text: project.evidence[1].text,
+    },
+    {
+      label: 'The outcome',
+      title: project.evidence[2].title,
+      text: project.evidence[2].text,
+    },
+  ]
 
   return (
     <article className="project-detail">
@@ -73,39 +90,19 @@ function ProjectDetail() {
         </section>
       </div>
 
-      <section className="section container project-detail__content" aria-label="Project case study">
-        <div>
-          <p className="label">The challenge</p>
-          <h2>What needed to work</h2>
-          <p>{project.challenge}</p>
-        </div>
-        <div>
-          <p className="label">The approach</p>
-          <h2>How the problem was framed</h2>
-          <p>{project.approach}</p>
-        </div>
-        <div>
-          <p className="label">The outcome</p>
-          <h2>What changed</h2>
-          <p>{project.outcome}</p>
+      <section className="section container project-detail__evidence" aria-label="Project case study">
+        <p className="label">Case study</p>
+        <h2>Inside the work</h2>
+        <div className="project-detail__evidence-grid">
+          {caseStudySections.map((item) => (
+            <div key={item.label}>
+              <p className="label">{item.label}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
       </section>
-
-      {project.evidence && (
-        <section className="section container project-detail__evidence" aria-label="Case study evidence">
-          <p className="label">Evidence from the case study</p>
-          <h2>Inside the work</h2>
-          <div className="project-detail__evidence-grid">
-            {project.evidence.map((item) => (
-              <div key={item.title}>
-                <p className="label">{item.label}</p>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       <ProjectNavigation
         previousProject={previousProject}
