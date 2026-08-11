@@ -1,6 +1,6 @@
 # Omeed Kashef — Personal Portfolio (Module 16)
 
-Live site: **https://Omeed.github.io**
+Live site: **https://omeedkashef.github.io/**
 
 LinkedIn Profile: https://www.linkedin.com/in/omeedkashef/
 
@@ -25,7 +25,7 @@ LinkedIn Update:
 
 ## Project Description
 
-This is the personal portfolio site of Omeed Kashef — a systems engineer and product leader working across autonomous vehicles, medical devices, defense, and now global health and social impact.
+This is the personal portfolio site of Omeed Kashef — a systems engineer and product leader working across autonomous vehicles, medical devices, defense, automotive, robotics, and software products.
 
 The site presents his skills, education, work history, projects, and professional links in one place, and lets a visitor send him a message directly. Behind an unlisted URL, a private back office lets him read and delete those messages.
 
@@ -48,7 +48,7 @@ It is a static single-page application. There is no server of our own; GitHub Pa
 
 Login and Back Office appear in no navigation. They are reachable only by typing the URL.
 
-**Build status:** Home, Portfolio, Links, and Contact are complete. Login and Back Office are in progress.
+**Build status:** Home, Portfolio, project case studies, Links, Contact, Login, and Back Office are complete.
 
 ### Why the URL has a `#`
 
@@ -87,7 +87,7 @@ The site uses React Router's `HashRouter`, so every route lives after a `#` frag
 ## Project Structure
 
 ```
-FL11024OmeedK.github.io/
+omeedkashef.github.io/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml            # Build + deploy to GitHub Pages on push to main
@@ -147,10 +147,10 @@ FL11024OmeedK.github.io/
 
 ```bash
 # Clone the repository
-git clone https://github.com/FL11024OmeedK/FL11024OmeedK.github.io.git
+git clone https://github.com/omeedkashef/omeedkashef.github.io.git
 
 # Navigate to the project directory
-cd FL11024OmeedK.github.io
+cd omeedkashef.github.io
 
 # Install dependencies exactly as locked
 npm ci
@@ -247,13 +247,13 @@ One consequence is worth recording, because it is easy to get wrong: the contact
 
 ## Author / Contributors
 
-**Omeed Kashef** — [@FL11024OmeedK](https://github.com/FL11024OmeedK)
+**Omeed Kashef** — [@omeedkashef](https://github.com/omeedkashef)
 
-- Portfolio: [FL11024OmeedK.github.io](https://FL11024OmeedK.github.io)
+- Portfolio: [omeedkashef.github.io](https://omeedkashef.github.io/)
 - LinkedIn: [linkedin.com/in/omeedkashef](https://www.linkedin.com/in/omeedkashef)
 - Email: omeedkashef@gmail.com
 
-Systems engineer and product leader with experience across autonomous vehicles, medical devices, and defense, now focused on global health, social justice, and sustainable technology. Currently a Forward Deployed Engineer at Codeboxx.
+Systems engineer and product leader with experience across autonomous vehicles, medical devices, defense, automotive, robotics, and full-stack product development. Currently a Forward Deployed Engineer at Codeboxx.
 
 **LinkedIn update for this module:** see the "LinkedIn Update" line at the top of this file.
 
