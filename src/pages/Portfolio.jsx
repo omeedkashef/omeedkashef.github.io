@@ -138,7 +138,7 @@ export const PROJECTS = [
       {
         src: surgicalNeedleImage,
         alt: 'Suture needle and thread held by a surgical instrument',
-        caption: 'Design question',
+        caption: 'Image of suture needle',
       },
       {
         src: surgicalProcessImage,
