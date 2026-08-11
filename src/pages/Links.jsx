@@ -1,9 +1,11 @@
 import linkedinImage from '../assets/link-linkedin.jpg'
 import githubImage from '../assets/link-github.jpg'
-import courseraImage from '../assets/link-coursera.jpg'
-import figmaImage from '../assets/link-figma.jpg'
+import learningImage from '../assets/link-coursera.jpg'
+import sourceImage from '../assets/link-figma.jpg'
+import iowaImage from '../assets/portfolio-projects.jpg'
+import grinnellImage from '../assets/portfolio-education.jpg'
 
-// All four thumbnails were generated with DALL-E via ChatGPT. See the
+// All thumbnails were generated with DALL-E via ChatGPT. See the
 // "AI-generated assets and tool attribution" table in ai/ai-spec.md.
 
 // Content is the resolved Links list from ai/ai-spec.md, taken verbatim.
@@ -23,18 +25,32 @@ const LINKS = [
     alt: 'Layered translucent panels branching and merging like a version history, set among green leaves',
   },
   {
-    title: 'Coursera Profile',
-    url: 'https://www.coursera.org/learner/omeedkashef',
-    text: 'Verified certifications, including the Google UX Design Professional Certificate. Documents the formal design training behind the human-factors side of my work.',
-    img: courseraImage,
+    title: 'CodeBoxx Academy',
+    url: 'https://academy.codeboxx.com/full-stack-development',
+    text: 'An overview of the AI Native Full Stack Development program behind the software projects featured in this portfolio, including its curriculum, tools, and learning approach.',
+    img: learningImage,
     alt: 'An open book whose pages dissolve into points of light rising through a forest clearing',
   },
   {
-    title: 'Portfolio Design File',
-    url: 'https://www.figma.com/make/YBYiqbFMh7f60b3tFPcSHt/Portfolio-website-design',
-    text: 'The Figma design file this site was prototyped from. Included to show the process — design system, tokens, and layout decisions — before any code was written.',
-    img: figmaImage,
+    title: 'Portfolio Source Code',
+    url: 'https://github.com/FL11024OmeedK/FL11024OmeedK.github.io',
+    text: 'The public repository for this website. Explore the React components, responsive styling, accessibility work, commit history, and deployment configuration behind the finished portfolio.',
+    img: sourceImage,
     alt: 'Overlapping translucent design artboards and colour swatches arranged on a mossy stone surface',
+  },
+  {
+    title: 'University of Iowa ISE',
+    url: 'https://engineering.uiowa.edu/ise',
+    text: 'The Industrial and Systems Engineering department where I completed my master’s degree, with a focus connecting engineering analysis, human factors, and complex systems.',
+    img: iowaImage,
+    alt: 'A workbench where circuit boards, sensors and interface sketches sit among growing plants',
+  },
+  {
+    title: 'Grinnell College',
+    url: 'https://www.grinnell.edu/',
+    text: 'The liberal arts college where I earned my bachelor’s degree in biochemistry and developed the interdisciplinary foundation that continues to shape my work.',
+    img: grinnellImage,
+    alt: 'An open study space with engineering texts, precise models and drafting tools overlooking mature trees',
   },
 ]
 
@@ -55,7 +71,7 @@ function Links() {
         </h1>
         <p className="lead links-intro">
           A few ways to explore the work independently — the full career history, the source code
-          behind it, the certifications, and the design file this site grew out of.
+          behind it, the training that shaped it, and a closer look at how this site was built.
         </p>
       </section>
 

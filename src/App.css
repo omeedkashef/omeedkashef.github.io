@@ -399,6 +399,20 @@
   border: 1px solid var(--border);
   background: var(--surface);
   height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 10%);
+}
+
+.project-card:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
 }
 
 .project-card__body {
@@ -433,6 +447,269 @@
   font-weight: 400;
   line-height: var(--lh-body);
   color: var(--fg-muted);
+}
+
+.project-card__cta {
+  margin-top: auto;
+  padding-top: var(--gap-sm);
+  color: var(--primary);
+  font-size: var(--step-sm);
+  font-weight: 600;
+}
+
+/* --- Project detail ------------------------------------------------------ */
+
+.project-detail__visual-frame {
+  max-width: 64rem;
+  padding-inline: 0;
+}
+
+.project-detail__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-sm);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #081e15;
+  color: #fff;
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.project-detail__header::before,
+.project-detail__header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.project-detail__header::before {
+  background: var(--project-hero) center / cover no-repeat;
+  transform: scale(1.14);
+}
+
+.project-detail__header::after {
+  background: linear-gradient(90deg, rgb(8 30 21 / 94%) 0%, rgb(8 30 21 / 84%) 55%, rgb(8 30 21 / 50%) 100%);
+}
+
+.project-detail__header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-detail__header h1,
+.project-detail__header .project-detail__intro,
+.project-detail__header .project-detail__back {
+  color: #fff;
+}
+
+.project-detail__header .eyebrow {
+  color: #b7e8cf;
+}
+
+.project-detail__header .tag {
+  border-color: rgb(255 255 255 / 42%);
+  color: #fff;
+}
+
+.project-detail__back {
+  margin-bottom: var(--gap-md);
+}
+
+.project-detail__intro {
+  max-width: 48rem;
+}
+
+.project-detail__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-md);
+  width: 100%;
+  margin-inline: 0;
+}
+
+.project-detail__figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.project-detail__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.project-detail__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-detail__figure figcaption {
+  margin-top: var(--gap-xs);
+  color: var(--fg);
+  font-size: var(--step-xs);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.project-detail__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-lg);
+}
+
+.project-detail__content > div {
+  border-top: 1px solid var(--border);
+  padding-top: var(--gap-md);
+}
+
+.project-detail__content h2 {
+  margin-block: var(--gap-xs) var(--gap-sm);
+  font-size: var(--step-lead);
+}
+
+.project-detail__content p:last-child {
+  color: var(--fg-muted);
+  line-height: var(--lh-body);
+}
+
+.project-detail__evidence {
+  padding-top: 0;
+}
+
+.project-detail__evidence > h2 {
+  margin-top: var(--gap-xs);
+}
+
+.project-detail__evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-lg);
+  margin-top: var(--gap-lg);
+}
+
+.project-detail__evidence-grid > div {
+  border-top: 1px solid var(--border);
+  padding-top: var(--gap-md);
+}
+
+.project-detail__evidence-grid h3 {
+  margin-block: var(--gap-xs) var(--gap-sm);
+  font-family: var(--font-heading);
+  font-size: var(--step-lead);
+  font-weight: 500;
+}
+
+.project-detail__evidence-grid p:last-child {
+  color: var(--fg-muted);
+  line-height: var(--lh-body);
+}
+
+.project-detail__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-md);
+  padding-top: 0;
+}
+
+.project-detail__nav--top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 0;
+  padding-inline: 0;
+  padding-block: 0.4rem;
+}
+
+.project-detail__nav--top .project-detail__nav-link {
+  display: inline-flex;
+  width: auto;
+  padding: 0;
+  border: 0;
+  color: var(--fg-muted);
+  font-family: var(--font-body);
+  font-size: var(--step-xs);
+  line-height: 1.2;
+}
+
+.project-detail__nav--top .label {
+  margin: 0;
+}
+
+.project-detail__nav--top .project-detail__nav-link:hover {
+  border-color: transparent;
+  color: var(--primary);
+  transform: none;
+}
+
+.project-detail__nav--top .project-detail__nav-link > span:last-child {
+  display: none;
+}
+
+.project-detail__nav--top .project-detail__nav-link--next {
+  margin-left: auto;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.project-detail__nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--gap-md);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: var(--step-lead);
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+
+.project-detail__nav-link:hover {
+  border-color: var(--primary);
+  color: var(--fg);
+  transform: translateY(-2px);
+}
+
+.project-detail__nav-link--next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+#selected-projects {
+  scroll-margin-top: 5rem;
+}
+
+@media (max-width: 768px) {
+  .project-detail__gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-detail__content,
+  .project-detail__evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-detail__nav {
+    grid-template-columns: 1fr;
+  }
+
+  .project-detail__nav--top {
+    display: flex;
+  }
+
+  .project-detail__nav-link--next {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 /* --- Links page ---------------------------------------------------------- */
@@ -1124,6 +1401,13 @@
   max-width: var(--container);
   margin-inline: auto;
   padding-inline: var(--gutter);
+}
+
+/* The project hero, its top navigation, and its gallery share this one frame,
+   so their outer edges cannot drift independently. */
+.container.project-detail__visual-frame {
+  max-width: 64rem;
+  padding-inline: 0;
 }
 
 .section {

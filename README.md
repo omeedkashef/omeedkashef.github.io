@@ -41,7 +41,7 @@ It is a static single-page application. There is no server of our own; GitHub Pa
 | --- | --- | --- |
 | `#/` | Home — introduction, technical skills, soft skills | Public |
 | `#/portfolio` | Portfolio — education, work experience, projects, resume download | Public |
-| `#/links` | Links — professional profiles and the design file | Public |
+| `#/links` | Links — professional profiles, training, and source code | Public |
 | `#/contact` | Contact — message form writing to Supabase | Public |
 | `#/login` | Login — Supabase email/password sign-in | Unlisted |
 | `#/backoffice` | Back Office — read and delete messages | Authenticated only |

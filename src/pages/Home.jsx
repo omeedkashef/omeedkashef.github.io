@@ -102,12 +102,12 @@ const EXPERTISE = [
 ]
 
 const DOMAIN_EXPERIENCE = [
-  ['Autonomous Vehicles', 'HMI, perception UX, fleet ops'],
-  ['Medical Device', 'FDA-regulated, clinical workflows'],
-  ['Defense', 'Mission systems, ITAR, real-time ops'],
-  ['Global Health', 'Low-resource settings, field tools'],
-  ['Social Justice', 'Civic tech, legal aid, community co-design'],
-  ['Social Entrepreneurship', 'Impact ventures, B2B SaaS, NGO partnerships'],
+  ['Autonomous Vehicles', 'Driver monitoring, simulation, takeover safety'],
+  ['Medical Devices', 'FDA 510(k), usability engineering, risk analysis'],
+  ['Defense Systems', 'Mission planning, operator workload, requirements'],
+  ['Consumer Products', 'Driver onboarding, prototyping, customer research'],
+  ['Robotics', 'Warehouse workflows, ergonomics, usability testing'],
+  ['Software Products', 'Full-stack applications, architecture, product strategy'],
 ]
 
 function ExperienceList({ items, className = '' }) {
@@ -217,8 +217,8 @@ function Home() {
               <p>
                 That experience shaped how I think about complexity: requirements traceability,
                 failure mode analysis, and human factors in high-cognitive-load environments. I’m now
-                applying that rigor to problems that matter most to me — global health equity,
-                social justice, and ventures built around social value.
+                applying that rigor to automotive, robotics, and software products where clear
+                requirements and thoughtful interaction design materially improve outcomes.
               </p>
               <p>
                 I believe technology and the natural world don’t have to be in conflict. The most
