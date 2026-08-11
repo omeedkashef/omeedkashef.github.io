@@ -1,6 +1,6 @@
 # Omeed Kashef — Personal Portfolio (Module 16)
 
-Live site: **https://FL11024OmeedK.github.io**
+Live site: **https://Omeed.github.io**
 
 LinkedIn Profile: https://www.linkedin.com/in/omeedkashef/
 
